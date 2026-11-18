@@ -6,6 +6,8 @@
 
 转译台的源码编码、构建和设备验收能力由 [Android to Harmony Migration Harness](https://github.com/tencentmusic/android-to-harmony-harness) 提供；使用转译台前请按该项目说明准备 Harness 运行环境。
 
+[开源能力范围全景图](docs/assets/overview/open-source-capabilities.svg)
+
 ## 一、全景架构
 
 [![鸿蒙 AI 工作台全景架构](docs/assets/overview/workbench-panorama.png)](docs/assets/overview/workbench-panorama.png)

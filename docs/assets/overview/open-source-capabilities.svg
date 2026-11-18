@@ -1,0 +1,276 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="3650" viewBox="0 0 1600 3650" role="img" aria-labelledby="title desc">
+  <title id="title">鸿蒙 AI 工作台开源能力范围全景图</title>
+  <desc id="desc">按一期通用功能、二期流程骨架、官方能力复用和内部保留边界整理的开源范围长图。</desc>
+  <style>
+    text { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; fill: #243b53; }
+    .eyebrow { font-size: 18px; font-weight: 700; letter-spacing: 4px; fill: #247c78; }
+    .title { font-size: 48px; font-weight: 700; fill: #18344f; }
+    .subtitle { font-size: 22px; fill: #61758a; }
+    .section-no { font-size: 17px; font-weight: 700; letter-spacing: 2px; fill: #2e6db2; }
+    .section-title { font-size: 30px; font-weight: 700; fill: #18344f; }
+    .section-copy { font-size: 17px; fill: #687c91; }
+    .card-title { font-size: 23px; font-weight: 700; fill: #18344f; }
+    .card-copy { font-size: 16px; fill: #65798d; }
+    .item { font-size: 17px; fill: #3e566d; }
+    .item-strong { font-size: 17px; font-weight: 700; fill: #147565; }
+    .small { font-size: 14px; fill: #7890a4; }
+    .tiny { font-size: 13px; fill: #7d91a4; }
+    .open-card { fill: #ffffff; stroke: #c9e7dc; stroke-width: 2; }
+    .official-card { fill: #ffffff; stroke: #a8d9e8; stroke-width: 2; }
+    .keep-card { fill: #fffdf9; stroke: #efd8b8; stroke-width: 2; }
+    .open-pill { fill: #eaf7f1; stroke: #b9dfd1; stroke-width: 1.5; }
+    .official-pill { fill: #eaf8fc; stroke: #a8d9e8; stroke-width: 1.5; }
+    .keep-pill { fill: #fff4e6; stroke: #efd8b8; stroke-width: 1.5; }
+    .pill-text { font-size: 15px; fill: #22725f; }
+    .official-text { font-size: 15px; fill: #176f83; }
+    .keep-text { font-size: 15px; fill: #98652c; }
+    .rule { stroke: #dce5ee; stroke-width: 2; }
+    .flow-line { stroke: #7bb7ae; stroke-width: 4; stroke-linecap: round; }
+    .legend-icon { font-size: 23px; font-weight: 700; fill: #ffffff; }
+    .footer-title { font-size: 20px; font-weight: 700; fill: #ffffff; }
+    .footer-copy { font-size: 16px; fill: #d9e7f0; }
+    .footer-link { font-size: 16px; font-weight: 700; fill: #8de0cb; }
+    .footer-note { font-size: 13px; fill: #9fb6c7; }
+  </style>
+
+  <rect width="1600" height="3560" fill="#f7f9fc"/>
+  <rect x="0" y="0" width="1600" height="300" fill="#edf5f4"/>
+  <rect x="0" y="0" width="16" height="3560" fill="#247c78"/>
+
+  <g transform="translate(92 70)">
+    <text class="eyebrow" x="0" y="0">OPEN SOURCE SCOPE / CAPABILITY MAP</text>
+    <text class="title" x="0" y="72">鸿蒙 AI 工作台 · 开源能力范围</text>
+    <text class="subtitle" x="0" y="119">开放通用实现与流程骨架，保留业务资产、执行内核和最新内部能力</text>
+    <rect x="0" y="166" width="1416" height="78" rx="8" fill="#ffffff" stroke="#d8e4ec" stroke-width="2"/>
+    <text class="item-strong" x="28" y="200">一句话口径</text>
+    <text class="card-copy" x="170" y="200">开源的是可独立复用的工具、模板、规范、示例和接入接口，不是业务数据、生产配置或完整商业交付内核。</text>
+    <text class="small" x="170" y="226">一期提供可运行的通用功能；二期提供需求、审批、任务与交接的流程骨架。</text>
+  </g>
+
+  <g transform="translate(92 330)">
+    <rect x="0" y="0" width="450" height="90" rx="8" fill="#eaf7f1" stroke="#b9dfd1" stroke-width="2"/>
+    <rect x="22" y="25" width="40" height="40" rx="6" fill="#247c78"/>
+    <text class="legend-icon" x="42" y="52" text-anchor="middle">开</text>
+    <text class="card-title" x="82" y="39">绿色 · 拟开源通用实现</text>
+    <text class="small" x="82" y="66">社区可安装、运行、接入和二次开发</text>
+    <rect x="483" y="0" width="450" height="90" rx="8" fill="#eaf8fc" stroke="#a8d9e8" stroke-width="2"/>
+    <rect x="505" y="25" width="40" height="40" rx="6" fill="#23829a"/>
+    <text class="legend-icon" x="525" y="52" text-anchor="middle">复</text>
+    <text class="card-title" x="565" y="39">青色 · 官方能力复用</text>
+    <text class="small" x="565" y="66">按上游许可使用官方 Skill / Hometrans</text>
+    <rect x="966" y="0" width="450" height="90" rx="8" fill="#fff4e6" stroke="#efd8b8" stroke-width="2"/>
+    <rect x="988" y="25" width="40" height="40" rx="6" fill="#b17836"/>
+    <text class="legend-icon" x="1008" y="52" text-anchor="middle">留</text>
+    <text class="card-title" x="1048" y="39">橙色 · 内部保留</text>
+    <text class="small" x="1048" y="66">业务资产、生产数据和核心执行实现</text>
+  </g>
+
+  <g transform="translate(92 500)">
+    <text class="section-no" x="0" y="0">01 / PHASE ONE</text>
+    <text class="section-title" x="0" y="48">一期：通用功能与工具</text>
+    <text class="section-copy" x="0" y="82">先开放能脱离真实业务数据独立运行的能力，提供安装说明、示例配置和可复用接口。</text>
+
+    <g transform="translate(0 120)">
+      <rect class="open-card" x="0" y="0" width="690" height="300" rx="8"/>
+      <rect x="0" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="28" y="52">图片压缩与资源处理</text>
+      <text class="card-copy" x="28" y="84">面向研发资源的通用压缩和结果导出工具。</text>
+      <g transform="translate(28 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">PNG / JPEG / WebP</text>
+        <rect class="open-pill" x="154" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="217" y="23" text-anchor="middle">无损重编码</text>
+        <rect class="open-pill" x="292" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="363" y="23" text-anchor="middle">原格式优化</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">与原件择小</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">WebP 逐张择小</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">Markdown / CSV</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">结果 ZIP 下载</text>
+      </g>
+      <text class="small" x="28" y="255">保留原件、输出摘要和可复核结果，适合接入独立工作流。</text>
+
+      <rect class="open-card" x="726" y="0" width="690" height="300" rx="8"/>
+      <rect x="726" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="754" y="52">基础包体与资源分析</text>
+      <text class="card-copy" x="754" y="84">对示例 APP / HAP 包进行结构化对比和明细导出。</text>
+      <g transform="translate(754 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">APP 或 HAP 上传</text>
+        <rect class="open-pill" x="154" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="217" y="23" text-anchor="middle">ZIP 批量上传</text>
+        <rect class="open-pill" x="292" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="363" y="23" text-anchor="middle">模块 / 文件增量</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">原生库分析</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">权限变化</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">Git 提交追踪</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">diff 摘要</text>
+        <rect class="open-pill" x="446" y="48" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="71" text-anchor="middle">CSV 明细</text>
+      </g>
+      <text class="small" x="754" y="255">输入和输出均为示例或使用方提供的包，不附带内部包体和生产分析数据。</text>
+    </g>
+
+    <g transform="translate(0 440)">
+      <rect class="open-card" x="0" y="0" width="690" height="300" rx="8"/>
+      <rect x="0" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="28" y="52">AI 问答入口与基础上下文</text>
+      <text class="card-copy" x="28" y="84">提供可替换模型和知识源的通用对话入口。</text>
+      <g transform="translate(28 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">App 选择</text>
+        <rect class="open-pill" x="154" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="23" text-anchor="middle">文字 / @类名</text>
+        <rect class="open-pill" x="308" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="23" text-anchor="middle">图片 / 文档附件</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">流式回答</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">多轮连续追问</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">历史会话查询</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">补充信息</text>
+        <rect class="open-pill" x="446" y="48" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="71" text-anchor="middle">文档选区问 AI</text>
+      </g>
+      <text class="small" x="28" y="255">公开入口承载通用交互；真实业务定位策略、权限和模型配置由使用方接入。</text>
+
+      <rect class="open-card" x="726" y="0" width="690" height="300" rx="8"/>
+      <rect x="726" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="754" y="52">知识门户与基础 MCP</text>
+      <text class="card-copy" x="754" y="84">用 manifest 和适配器接入自有知识，支持网页阅读与本地查询。</text>
+      <g transform="translate(754 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">知识仓 / manifest</text>
+        <rect class="open-pill" x="154" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="217" y="23" text-anchor="middle">项目知识引用</text>
+        <rect class="open-pill" x="292" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="363" y="23" text-anchor="middle">网页知识门户</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">本地知识 MCP</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">目录浏览 / 搜索</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">精确章节读取</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">文档 / 图片阅读</text>
+        <rect class="open-pill" x="446" y="48" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="71" text-anchor="middle">资源下载</text>
+      </g>
+      <text class="small" x="754" y="255">示例知识和适配协议随仓库提供；真实业务知识、源码图谱和授权策略不随仓库开放。</text>
+    </g>
+
+    <g transform="translate(0 760)">
+      <rect class="open-card" x="0" y="0" width="690" height="300" rx="8"/>
+      <rect x="0" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="28" y="52">基础审查与用例生成</text>
+      <text class="card-copy" x="28" y="84">围绕公开示例工程提供可复用的审查、问题记录和测试模板。</text>
+      <g transform="translate(28 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">源 / 目标分支</text>
+        <rect class="open-pill" x="154" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="23" text-anchor="middle">分支代码审查</text>
+        <rect class="open-pill" x="308" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="23" text-anchor="middle">变更汇总</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">问题修复 / 验收依据</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">测试用例生成</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">图片资源检查</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">状态跟踪</text>
+      </g>
+      <text class="small" x="28" y="255">只提供通用审查和模板能力；真实代码审查策略、业务验收规则和生产报告保留内部。</text>
+
+      <rect class="open-card" x="726" y="0" width="690" height="300" rx="8"/>
+      <rect x="726" y="0" width="690" height="10" rx="5" fill="#247c78"/>
+      <text class="card-title" x="754" y="52">工程接入与配置样例</text>
+      <text class="card-copy" x="754" y="84">通过示例配置把能力接入独立源码项目和知识源。</text>
+      <g transform="translate(754 112)">
+        <rect class="open-pill" x="0" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="23" text-anchor="middle">独立源码项目接入</text>
+        <rect class="open-pill" x="154" y="0" width="126" height="34" rx="5"/><text class="pill-text" x="217" y="23" text-anchor="middle">App / 场景选择</text>
+        <rect class="open-pill" x="292" y="0" width="142" height="34" rx="5"/><text class="pill-text" x="363" y="23" text-anchor="middle">项目知识引用</text>
+        <rect class="open-pill" x="446" y="0" width="150" height="34" rx="5"/><text class="pill-text" x="521" y="23" text-anchor="middle">Profile 切换</text>
+        <rect class="open-pill" x="0" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="71" y="71" text-anchor="middle">路径 / 工具链配置</text>
+        <rect class="open-pill" x="154" y="48" width="142" height="34" rx="5"/><text class="pill-text" x="225" y="71" text-anchor="middle">知识源适配器</text>
+        <rect class="open-pill" x="308" y="48" width="126" height="34" rx="5"/><text class="pill-text" x="371" y="71" text-anchor="middle">Webhook 校验</text>
+      </g>
+      <text class="small" x="754" y="255">配置文件只提供公开示例，不包含实际路径、Token、服务地址或生产权限。</text>
+    </g>
+  </g>
+
+  <g transform="translate(92 1720)">
+    <line class="rule" x1="0" y1="0" x2="1416" y2="0"/>
+    <text class="section-no" x="0" y="58">02 / PHASE TWO</text>
+    <text class="section-title" x="0" y="106">二期：流程骨架与接入接口</text>
+    <text class="section-copy" x="0" y="140">开放需求、审批、任务、交接和知识回流的通用流转代码；执行内核和业务策略由使用方实现。</text>
+
+    <g transform="translate(0 190)">
+      <line class="flow-line" x1="150" y1="55" x2="1260" y2="55"/>
+      <circle cx="150" cy="55" r="13" fill="#247c78"/><circle cx="520" cy="55" r="13" fill="#247c78"/><circle cx="890" cy="55" r="13" fill="#247c78"/><circle cx="1260" cy="55" r="13" fill="#247c78"/>
+      <g transform="translate(0 0)">
+        <rect class="open-card" x="0" y="95" width="330" height="430" rx="8"/>
+        <text class="card-title" x="24" y="140">① 需求接入</text>
+        <text class="card-copy" x="24" y="172">把需求材料固定成可追踪输入。</text>
+        <text class="item" x="24" y="220">• 手动建单 / App / 分支选择</text>
+        <text class="item" x="24" y="254">• 文字、文档、图片、视频上传</text>
+        <text class="item" x="24" y="288">• 补充材料与需求范围说明</text>
+        <text class="item" x="24" y="322">• 构建信息、资源和方案来源</text>
+        <text class="item" x="24" y="356">• 材料版本固定与输入校验</text>
+        <text class="item" x="24" y="390">• Webhook / 请求 / 会话记录</text>
+        <rect class="open-pill" x="24" y="428" width="174" height="34" rx="5"/><text class="pill-text" x="111" y="451" text-anchor="middle">通用接入接口</text>
+      </g>
+      <g transform="translate(370 0)">
+        <rect class="open-card" x="0" y="95" width="330" height="430" rx="8"/>
+        <text class="card-title" x="24" y="140">② 方案审核</text>
+        <text class="card-copy" x="24" y="172">展示材料、登记人工决定和缺项。</text>
+        <text class="item" x="24" y="220">• 审核包展示</text>
+        <text class="item" x="24" y="254">• 人工审批登记与待办通知</text>
+        <text class="item" x="24" y="288">• 需求 / 范围 / 构建信息复核</text>
+        <text class="item" x="24" y="322">• 资源与方案来源关联</text>
+        <text class="item" x="24" y="356">• 通过 / 不通过 / 需补充</text>
+        <text class="item" x="24" y="390">• 审批材料版本变化提醒</text>
+        <rect class="open-pill" x="24" y="428" width="174" height="34" rx="5"/><text class="pill-text" x="111" y="451" text-anchor="middle">人工决定留痕</text>
+      </g>
+      <g transform="translate(740 0)">
+        <rect class="open-card" x="0" y="95" width="330" height="430" rx="8"/>
+        <text class="card-title" x="24" y="140">③ 任务与交接</text>
+        <text class="card-copy" x="24" y="172">把过程结果组织成可复核的交付包。</text>
+        <text class="item" x="24" y="220">• 任务状态与状态跟踪</text>
+        <text class="item" x="24" y="254">• 允许阶段重跑和持久队列</text>
+        <text class="item" x="24" y="288">• 变更汇总与验收结果展示</text>
+        <text class="item" x="24" y="322">• 缺项交接和交接材料汇总</text>
+        <text class="item" x="24" y="356">• 开发本地复核、提测确认</text>
+        <text class="item" x="24" y="390">• 结果 ZIP 下载与历史报告追踪</text>
+        <rect class="open-pill" x="24" y="428" width="174" height="34" rx="5"/><text class="pill-text" x="111" y="451" text-anchor="middle">通用交接模型</text>
+      </g>
+      <g transform="translate(1110 0)">
+        <rect class="open-card" x="0" y="95" width="306" height="430" rx="8"/>
+        <text class="card-title" x="24" y="140">④ 知识回流</text>
+        <text class="card-copy" x="24" y="172">把确认过的经验沉淀为可复用材料。</text>
+        <text class="item" x="24" y="220">• 知识 MR 生成</text>
+        <text class="item" x="24" y="254">• 知识内容更新与同步</text>
+        <text class="item" x="24" y="288">• 目录 / 搜索 / 索引更新</text>
+        <text class="item" x="24" y="322">• 迁移经验与方案复用</text>
+        <text class="item" x="24" y="356">• 文档选区问 AI</text>
+        <text class="item" x="24" y="390">• 人工审核入口</text>
+        <rect class="open-pill" x="24" y="428" width="174" height="34" rx="5"/><text class="pill-text" x="111" y="451" text-anchor="middle">知识维护接口</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(92 2470)">
+    <line class="rule" x1="0" y1="0" x2="1416" y2="0"/>
+    <text class="section-no" x="0" y="58">03 / OFFICIAL REUSE</text>
+    <text class="section-title" x="0" y="106">官方能力复用 · 作为开放生态的一部分</text>
+    <text class="section-copy" x="0" y="140">长图中的青色能力表示工作台提供接入和编排方式，具体实现和授权以官方项目为准。</text>
+    <rect class="official-card" x="0" y="190" width="690" height="200" rx="8"/>
+    <text class="card-title" x="28" y="240">HarmonyOS 官方 Skill / 参考资料</text>
+    <text class="card-copy" x="28" y="274">提供官方规范、组件、状态管理和 UI 参考的接入位置。</text>
+    <rect class="official-pill" x="28" y="306" width="200" height="36" rx="5"/><text class="official-text" x="128" y="330" text-anchor="middle">按上游许可复用</text>
+    <rect class="official-pill" x="240" y="306" width="200" height="36" rx="5"/><text class="official-text" x="340" y="330" text-anchor="middle">来源与版本可追踪</text>
+    <rect class="official-pill" x="452" y="306" width="200" height="36" rx="5"/><text class="official-text" x="552" y="330" text-anchor="middle">使用方自行核对许可</text>
+    <rect class="official-card" x="726" y="190" width="690" height="200" rx="8"/>
+    <text class="card-title" x="754" y="240">Hometrans 等官方能力</text>
+    <text class="card-copy" x="754" y="274">工作流提供自动测试验收和适配器接入位置，官方能力独立维护。</text>
+    <rect class="official-pill" x="754" y="306" width="200" height="36" rx="5"/><text class="official-text" x="854" y="330" text-anchor="middle">接入接口</text>
+    <rect class="official-pill" x="966" y="306" width="200" height="36" rx="5"/><text class="official-text" x="1066" y="330" text-anchor="middle">证据回传</text>
+    <rect class="official-pill" x="1178" y="306" width="200" height="36" rx="5"/><text class="official-text" x="1278" y="330" text-anchor="middle">授权边界独立</text>
+  </g>
+
+  <g transform="translate(92 2930)">
+    <line class="rule" x1="0" y1="0" x2="1416" y2="0"/>
+    <text class="section-no" x="0" y="58">04 / RETAINED BOUNDARY</text>
+    <text class="section-title" x="0" y="106">明确不在本次开源范围</text>
+    <text class="section-copy" x="0" y="140">这些能力继续在内部仓库和受控环境中维护，不随公开仓库发布。</text>
+    <rect class="keep-card" x="0" y="190" width="1416" height="270" rx="8"/>
+    <g transform="translate(28 228)">
+      <text class="keep-text" x="0" y="0" font-size="18" font-weight="700">业务与数据资产</text>
+      <text class="item" x="0" y="34">真实业务知识、生产数据、用户与账号信息、真实迁移档案、全量双端映射和授权源码图谱</text>
+      <text class="keep-text" x="0" y="90" font-size="18" font-weight="700">执行与策略内核</text>
+      <text class="item" x="0" y="124">完整转译执行引擎、业务分析策略、生产模型配置、权限策略、验收恢复策略和内部质量门禁</text>
+      <text class="keep-text" x="0" y="180" font-size="18" font-weight="700">三期最新实现</text>
+      <text class="item" x="0" y="214">多端转译、原子编排、语法检查、云真机通道、跨平台调度、效能成本统计及相关最新实现</text>
+    </g>
+  </g>
+
+  <g transform="translate(92 3440)">
+    <rect x="0" y="0" width="1416" height="150" rx="8" fill="#18344f"/>
+    <text class="footer-title" x="30" y="42">发布口径</text>
+    <text class="footer-copy" x="30" y="78">开源仓库提供通用代码、模板、规范、示例和接入接口；使用者需要自行准备源码、SDK、设备、模型和环境配置。</text>
+    <text class="footer-copy" x="30" y="110">转译台运行依赖独立的 Migration Harness：</text>
+    <a xlink:href="https://github.com/tencentmusic/android-to-harmony-harness" target="_blank"><text class="footer-link" x="365" y="110">github.com/tencentmusic/android-to-harmony-harness</text></a>
+    <text class="footer-note" x="30" y="136">正式发布前仍需补充项目许可证，并核对 HarmonyOS 官方参考资料及第三方资产的再分发许可。</text>
+  </g>
+</svg>
