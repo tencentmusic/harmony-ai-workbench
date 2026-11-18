@@ -1,0 +1,467 @@
+.sider {
+  border-right: 1px solid #d5dae1;
+  background: #f4f6f8 !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: width 140ms ease;
+}
+
+.sider :global(.ant-layout-sider-children) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  position: relative;
+}
+
+.rail {
+  width: 56px;
+  border-right: 1px solid #d8dde5;
+  background: #eeeeee;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f3f5f8;
+}
+
+.top {
+  padding: 12px;
+  border-bottom: 1px solid #e3e8ef;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.newBtn {
+  flex: 1;
+  background: #fff !important;
+  border: 1px solid #cfd6df !important;
+  color: #202531 !important;
+  border-radius: 10px !important;
+  font-weight: 600;
+  height: 38px;
+  min-width: 0;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.item {
+  cursor: pointer;
+  border: 1px solid #dce3ec;
+  border-radius: 9px;
+  padding: 7px 12px;
+  transition: background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  background: #fff;
+  color: #2b3240;
+  min-width: 0;
+}
+
+.item:hover {
+  border-color: #ccd5e0;
+  box-shadow: 0 1px 8px rgba(15, 23, 42, 0.06);
+}
+
+.itemRow {
+  min-width: 0;
+  min-height: 24px;
+}
+
+.active {
+  border-color: #b8cdf7;
+  background: #edf3ff;
+}
+
+.menuBtn {
+  opacity: 0.7;
+  color: #64748b !important;
+}
+
+.menuBtn:hover {
+  opacity: 1;
+  background: #eef2f7 !important;
+  color: #334155 !important;
+}
+
+.panelToggleBtn {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 8px !important;
+  border: 1px solid #d0d7e2 !important;
+  color: #344054 !important;
+  background: #fff !important;
+  flex: 0 0 34px;
+}
+
+.panelToggleBtn:hover {
+  border-color: #bcc7d7 !important;
+  color: #1f2937 !important;
+  background: #f8fafc !important;
+}
+
+.itemMain {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.itemTitle {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 14px;
+  color: #344054;
+}
+
+.railFooter {
+  margin-top: auto;
+  padding: 10px 5px 12px;
+  border-top: 1px solid #dbe1e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.feedbackBtn {
+  width: 46px !important;
+  height: 43px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  color: #111111 !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.changelogBtnWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.changelogUnreadDot {
+  position: absolute;
+  top: 3px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f5222d;
+  box-shadow: 0 0 0 2px #eeeeee;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.changelogBtn {
+  width: 46px !important;
+  height: 43px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  color: #111111 !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.changelogBtn:hover {
+  background: #ffffff !important;
+  color: #4185ff !important;
+}
+
+.changelogIcon {
+  font-size: 16px;
+  line-height: 17px;
+}
+
+.changelogText {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+.feedbackBtn:hover {
+  background: #ffffff !important;
+  color: #4185ff !important;
+}
+
+.feedbackIcon {
+  font-size: 16px;
+  line-height: 17px;
+}
+
+.feedbackText {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+.userInfo {
+  width: 46px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  color: #333333;
+}
+
+.logoutIconBtn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #333333;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+.logoutIconBtn:hover {
+  color: #4185ff;
+  background: #ffffff;
+}
+
+.feedbackModal :global(.ant-modal-content) {
+  border-radius: 16px;
+  padding: 28px 22px 22px;
+}
+
+.feedbackModal :global(.ant-modal-header) {
+  margin-bottom: 18px;
+}
+
+.feedbackModal :global(.ant-modal-title) {
+  color: #111111;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.feedbackModal :global(.ant-modal-close) {
+  top: 18px;
+  inset-inline-end: 18px;
+}
+
+.feedbackIntro {
+  color: #333333;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.feedbackTextarea {
+  height: 204px !important;
+  resize: none !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #f5f6f8 !important;
+  padding: 16px !important;
+  box-shadow: none !important;
+}
+
+.feedbackTextarea :global(textarea) {
+  height: 148px !important;
+  resize: none !important;
+  color: #111111;
+  background: transparent !important;
+}
+
+.feedbackTextarea :global(.ant-input-data-count) {
+  color: #999999;
+  font-size: 12px;
+  bottom: 13px;
+  inset-inline-end: 14px;
+}
+
+.feedbackSubmitBtn {
+  height: 44px;
+  margin-top: 24px;
+  border-radius: 12px !important;
+  background: #000000 !important;
+  border-color: #000000 !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.feedbackSubmitBtn:disabled {
+  color: #ffffff !important;
+  opacity: 0.35;
+}
+
+.changelogModal :global(.ant-modal-content) {
+  border-radius: 18px;
+  padding: 28px 26px 24px;
+}
+
+.changelogModal :global(.ant-modal-header) {
+  margin-bottom: 12px;
+}
+
+.changelogModal :global(.ant-modal-title) {
+  color: #111111;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.changelogIntro {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: 18px;
+}
+
+.changelogTimeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 28px;
+}
+
+.changelogTimeline::before {
+  content: "";
+  position: absolute;
+  left: 37px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: #d9e2ef;
+}
+
+.releaseItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.releaseDotWrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.releaseDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #9fb6dd;
+  box-shadow: 0 0 0 6px rgba(65, 133, 255, 0.08);
+}
+
+.releaseDotLatest {
+  background: #4185ff;
+  box-shadow: 0 0 0 6px rgba(65, 133, 255, 0.12);
+}
+
+.releaseCard {
+  padding-left: 16px;
+}
+
+.releaseHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.releaseVersion {
+  color: #111111;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.releaseDate {
+  color: #73839b;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.releaseLatest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #ebf2ff;
+  color: #2e6ee6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.releaseList {
+  margin: 0;
+  padding: 0 0 0 18px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.releaseListItem {
+  margin-bottom: 10px;
+}
+
+.releaseListItem:last-child {
+  margin-bottom: 0;
+}
+

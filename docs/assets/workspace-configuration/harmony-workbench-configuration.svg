@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1060" viewBox="0 0 1560 1060" role="img" aria-labelledby="title desc">
+  <title id="title">鸿蒙 AI 工作台：外接项目与灵活配置</title>
+  <desc id="desc">外接 Git 项目分为源码项目、知识库项目和 Harness 工程三组。源码与知识库通过 workspace-apps.json 配置接入，Harness 通过 CLOUD_AGENT_HARNESS_ROOT 指定路径。三条直线连接到工作台，分别提供源码上下文、知识上下文和转译执行能力。工作台统一列出 AI 员工、知识库与 MCP、转译台、集成台、平台管理和效率工具。</desc>
+  <defs>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#587c9d"/></marker>
+    <marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#55846b"/></marker>
+    <marker id="amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#aa854a"/></marker>
+  </defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#242d38;letter-spacing:0}
+    .title{font-size:34px;font-weight:700}.heading{font-size:26px;font-weight:700}
+    .label{font-size:23px;font-weight:600}.body{font-size:21px}
+    .note{font-size:19px;fill:#657180}.key{font-size:19px;fill:#536273}
+    .blue{fill:#446d91}.green{fill:#46735d}.amber{fill:#926d33}
+  </style>
+  <rect width="1560" height="1060" fill="#fff"/>
+  <text x="48" y="61" class="title">鸿蒙 AI 工作台 · 项目配置关系</text>
+  <text x="48" y="102" class="note">外接 Git 项目 → 配置接入 → 工作台使用</text>
+
+  <!-- External repositories are grouped by their role. -->
+  <rect x="48" y="140" width="464" height="222" rx="8" fill="#f0f6fc" stroke="#b8cbdf" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="76" y="181" class="heading blue">源码项目</text>
+  <text x="484" y="180" text-anchor="end" class="note blue">可扩展</text>
+  <text x="76" y="225" class="label">Android 源码 + HarmonyOS 源码</text>
+  <text x="76" y="269" class="body">示例项目：独立仓接入</text>
+  <text x="76" y="303" class="body">多 App 示例：共享仓按范围划分</text>
+  <text x="76" y="339" class="note">按项目组合双端源码</text>
+
+  <rect x="548" y="140" width="464" height="222" rx="8" fill="#f0f8f4" stroke="#b9d6c7" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="576" y="181" class="heading green">知识库项目</text>
+  <text x="984" y="180" text-anchor="end" class="note green">可扩展</text>
+  <text x="576" y="232" class="label">manifest knowledge</text>
+  <text x="984" y="232" text-anchor="end" class="body">业务知识</text>
+  <text x="576" y="280" class="label">ktv-harmony-docs</text>
+  <text x="984" y="280" text-anchor="end" class="body">迁移案例</text>
+  <text x="576" y="339" class="note">按项目引用 / 按门户发布</text>
+
+  <rect x="1048" y="140" width="464" height="222" rx="8" fill="#fff8eb" stroke="#dfc99c" stroke-width="1.5"/>
+  <text x="1076" y="181" class="heading amber">Harness 工程</text>
+  <text x="1484" y="180" text-anchor="end" class="note amber">路径可配</text>
+  <text x="1076" y="232" class="label">androidtoharmonyharness</text>
+  <text x="1076" y="280" class="body">转译规则 · 工具执行 · 验收取证</text>
+  <text x="1076" y="339" class="note">需兼容规则、CLI 与能力合同</text>
+
+  <line x1="280" y1="362" x2="280" y2="420" stroke="#587c9d" stroke-width="2" marker-end="url(#blue)"/>
+  <line x1="780" y1="362" x2="780" y2="420" stroke="#55846b" stroke-width="2" marker-end="url(#green)"/>
+  <line x1="1280" y1="362" x2="1280" y2="420" stroke="#aa854a" stroke-width="2" marker-end="url(#amber)"/>
+
+  <!-- Configuration entries stay aligned with their repository groups. -->
+  <rect x="48" y="420" width="464" height="112" rx="8" fill="#fff" stroke="#b8cbdf" stroke-width="1.5"/>
+  <text x="280" y="460" text-anchor="middle" class="label blue">workspace-apps.json</text>
+  <text x="280" y="501" text-anchor="middle" class="body">源码路径 + App 范围</text>
+  <rect x="548" y="420" width="464" height="112" rx="8" fill="#fff" stroke="#b9d6c7" stroke-width="1.5"/>
+  <text x="780" y="460" text-anchor="middle" class="label green">workspace-apps.json</text>
+  <text x="780" y="501" text-anchor="middle" class="body">知识源注册 + 项目引用 / 门户</text>
+  <rect x="1048" y="420" width="464" height="112" rx="8" fill="#fff" stroke="#dfc99c" stroke-width="1.5"/>
+  <text x="1280" y="460" text-anchor="middle" class="label amber">Harness 路径配置</text>
+  <text x="1280" y="501" text-anchor="middle" class="key">CLOUD_AGENT_HARNESS_ROOT</text>
+
+  <line x1="280" y1="532" x2="280" y2="640" stroke="#587c9d" stroke-width="2" marker-end="url(#blue)"/>
+  <text x="300" y="576" class="body blue">源码上下文</text>
+  <text x="300" y="608" class="note">问答 / 转译 / 集成</text>
+  <line x1="780" y1="532" x2="780" y2="640" stroke="#55846b" stroke-width="2" marker-end="url(#green)"/>
+  <text x="800" y="576" class="body green">知识上下文</text>
+  <text x="800" y="608" class="note">门户 / 问答 / 转译 / MCP</text>
+  <line x1="1280" y1="532" x2="1280" y2="640" stroke="#aa854a" stroke-width="2" marker-end="url(#amber)"/>
+  <text x="1300" y="576" class="body amber">执行能力</text>
+  <text x="1300" y="608" class="note">驱动转译台</text>
+
+  <!-- Workbench functions are listed together without internal connectors. -->
+  <rect x="48" y="640" width="1464" height="320" rx="8" fill="#f8f9fb" stroke="#c7cfd8" stroke-width="1.5"/>
+  <text x="80" y="688" class="heading">鸿蒙 AI 工作台</text>
+  <text x="1480" y="687" text-anchor="end" class="note">kugou-harmony-ai-workbench</text>
+  <line x1="80" y1="711" x2="1480" y2="711" stroke="#dce1e7"/>
+  <text x="80" y="753" class="label">AI 员工</text>
+  <text x="80" y="789" class="body">知识问答 · 源码定位 · 双端分析</text>
+  <text x="570" y="753" class="label">知识库 / MCP</text>
+  <text x="570" y="789" class="body">文档门户 · 检索 · 外部 Agent 接入</text>
+  <text x="1060" y="753" class="label">转译台</text>
+  <text x="1060" y="789" class="body">编码 · 构建 · 设备结论 · 交付</text>
+
+  <text x="80" y="853" class="label">集成台</text>
+  <text x="80" y="889" class="body">代码审查 · 测试用例 · 合入协作</text>
+  <text x="570" y="853" class="label">平台管理</text>
+  <text x="570" y="889" class="body">权限 · 模型 · 数据看板</text>
+  <text x="570" y="922" class="body">Webhook 同步 · 自动部署</text>
+  <text x="1060" y="853" class="label">效率工具</text>
+  <text x="1060" y="889" class="body">包体对比 · 图片压缩</text>
+  <text x="1060" y="922" class="note">使用上传文件</text>
+
+  <text x="48" y="1006" class="note">虚线分组：支持配置新增同类资源；新知识协议需适配器。WORKSPACE_PROFILE 用于切换机器路径。</text>
+</svg>

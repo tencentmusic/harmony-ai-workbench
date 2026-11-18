@@ -1,0 +1,9 @@
+# 安全占位片段：禁止把 OpenCode 原始 API 暴露到局域网。
+#
+# 浏览器只能访问已鉴权的 Harmony Workbench BFF；OpenCode 的 4098/4100
+# 端口均只监听 127.0.0.1。远程开发请使用 SSH 本地端口转发，并在本地
+# BFF 环境变量中配置 Basic 凭据，不能恢复裸 `/harmony/` 反代。
+
+    location /harmony/ {
+        return 404;
+    }

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "validation": { "status": "passed" },
+  "features": [
+    {
+      "feature_id": "demo_feature",
+      "title": "示例功能",
+      "aliases": ["demo"],
+      "summary": "用于验证知识库接入的最小示例功能。",
+      "breadcrumb": ["示例", "功能"],
+      "applies_to": ["demo.android", "demo.harmony"],
+      "canonical_readme": "wiki/features/demo/README.md",
+      "route_shard": "demo",
+      "confidence": "high"
+    }
+  ]
+}

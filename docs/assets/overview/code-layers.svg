@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060" role="img" aria-labelledby="title desc">
+  <title id="title">代码架构：入口、业务模块与技术实现</title><desc id="desc">浏览器界面调用 API，API 和 Worker 通过业务模块公开入口执行，模块使用自身技术实现和共享配置知识包。src/lib 仍有问答、存储、包体和图片历史实现，platform 尚未集中所有技术适配。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:25px;font-weight:700}.body{font-size:21px}.note{font-size:20px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+  </style>
+  <rect width="1600" height="1060" fill="#fff"/>
+  <text x="64" y="72" class="title">代码架构：入口、业务模块与技术实现</text>
+  <text x="64" y="118" class="sub">实线表示主要调用方向；历史实现单独标出，避免把规划画成现状</text>
+  <rect x="64" y="184" width="432" height="140" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="86" y="223" class="heading">浏览器界面</text>
+  <text x="86" y="263" class="body">src/features + src/shared</text>
+  <text x="86" y="295" class="body">通过契约和 HTTP 调用 API</text>
+  <rect x="584" y="184" width="432" height="140" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="606" y="223" class="heading">页面 / API 入口</text>
+  <text x="606" y="263" class="body">src/app</text>
+  <text x="606" y="295" class="body">鉴权、输入解析、业务装配</text>
+  <rect x="1104" y="184" width="432" height="140" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="1126" y="223" class="heading">独立进程入口</text>
+  <text x="1126" y="263" class="body">workers/cloud-agent / repo-sync</text>
+  <text x="1126" y="295" class="body">加载配置、启动与停止</text>
+  <path d="M496 254H584" class="arrow"/>
+  <path d="M800 324V397" class="arrow"/>
+  <path d="M1320 324V397" class="arrow"/>
+  <rect y="397" width="1600" height="193" fill="#f6f8fa"/>
+  <text x="64" y="438" class="heading">业务模块 · src/server/modules/*/public.ts</text>
+  <text x="64" y="483" class="body">cloud-agent：转译与交付        integration：集成审查        knowledge：知识门户</text>
+  <text x="64" y="528" class="body">repo-sync：仓库同步        opencode-assets：资源访问</text>
+  <text x="64" y="565" class="note">跨模块通过公开入口协作；领域规则与数据库、进程、网络、文件副作用分离。</text>
+  <path d="M320 590V652" class="arrow"/>
+  <path d="M800 590V652" class="arrow"/>
+  <path d="M1280 590V652" class="arrow"/>
+  <rect x="64" y="652" width="432" height="147" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+  <text x="86" y="691" class="heading">模块内部技术实现</text>
+  <text x="86" y="731" class="body">Git、Prisma、执行器、文件访问</text>
+  <text x="86" y="763" class="body">由所属业务模块维护</text>
+  <rect x="584" y="652" width="432" height="147" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text x="606" y="691" class="heading">共享运行包</text>
+  <text x="606" y="731" class="body">workspace-config：统一配置</text>
+  <text x="606" y="763" class="body">android-harmony-kb：查询能力</text>
+  <rect x="1104" y="652" width="432" height="147" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+  <text x="1126" y="691" class="heading">平台层 platform</text>
+  <text x="1126" y="731" class="body">只抽取多模块真实共用能力</text>
+  <text x="1126" y="763" class="body">当前主要为知识包根路径解析</text>
+  <rect y="844" width="1600" height="198" fill="#f6f8fa"/>
+  <text x="64" y="886" class="heading">当前迁移边界</text>
+  <text x="64" y="930" class="body">src/lib 仍承载问答编排、权限 / store、包体与图片工具；部分 API 仍直接调用这些历史实现。</text>
+  <text x="64" y="972" class="body">src/contracts 为前后端共享纯契约；服务端不反向导入页面，前端不导入服务端实现。</text>
+  <text x="64" y="1013" class="note">新增能力进入所属模块；platform 不是所有外部调用的必经层。</text>
+</svg>

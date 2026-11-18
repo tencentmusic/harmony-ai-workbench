@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1133" viewBox="0 0 1600 1133" role="img" aria-labelledby="title desc">
+  <title id="title">真实配置节选：源码定义与知识库引用</title>
+  <desc id="desc">摘取示例 workspace-apps.json 中双端源码标识和分支、App 标识、知识引用，以及 manifest 知识源注册、连接、读取根和门户配置。省略完整路径、模块范围、targets、能力与同步字段，不能直接替换配置。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:27px;font-weight:700}.body{font-size:23px}.note{font-size:21px;fill:#647785}
+    .code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:21px;fill:#315f93}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+  </style>
+  <rect width="1600" height="1133" fill="#fff"/>
+  <text x="64" y="72" class="title">真实配置节选：源码定义与知识库引用</text>
+  <text x="64" y="118" class="sub">示例项目 + manifest knowledge · 仅保留核心关系，省略其余字段</text>
+  <text x="64" y="192" class="heading">projects[]：项目声明源码与知识引用</text>
+  <text x="832" y="192" class="heading">shared_knowledge_bases[]：注册知识源</text>
+  <rect x="64" y="225" width="704" height="773" rx="8" fill="#f7f9fb" stroke="#d0dce5"/>
+  <rect x="832" y="225" width="704" height="773" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text xml:space="preserve" x="88" y="262" class="code">{</text>
+  <text xml:space="preserve" x="88" y="288" class="code">  "project_id": "demo-project",</text>
+  <text xml:space="preserve" x="88" y="314" class="code">  "sources": {</text>
+  <text xml:space="preserve" x="88" y="340" class="code">    "android": {</text>
+  <text xml:space="preserve" x="88" y="366" class="code">      "source_id": "android-live",</text>
+  <text xml:space="preserve" x="88" y="392" class="code">      "branch": "release"</text>
+  <text xml:space="preserve" x="88" y="418" class="code">    },</text>
+  <text xml:space="preserve" x="88" y="444" class="code">    "harmony": {</text>
+  <text xml:space="preserve" x="88" y="470" class="code">      "source_id": "harmony-live",</text>
+  <text xml:space="preserve" x="88" y="496" class="code">      "branch": "kan-fx-release"</text>
+  <text xml:space="preserve" x="88" y="522" class="code">    }</text>
+  <text xml:space="preserve" x="88" y="548" class="code">  },</text>
+  <text xml:space="preserve" x="88" y="574" class="code">  "apps": [</text>
+  <text xml:space="preserve" x="88" y="600" class="code">    {</text>
+  <text xml:space="preserve" x="88" y="626" class="code">      "app_id": "DemoApp"</text>
+  <text xml:space="preserve" x="88" y="652" class="code">    }</text>
+  <text xml:space="preserve" x="88" y="678" class="code">  ],</text>
+  <text xml:space="preserve" x="88" y="704" class="code">  "knowledge": [</text>
+  <text xml:space="preserve" x="88" y="730" class="code">    {</text>
+  <text xml:space="preserve" x="88" y="756" class="code">      "use": "android-harmony-kb",</text>
+  <text xml:space="preserve" x="88" y="782" class="code">      "role": "codegraph"</text>
+  <text xml:space="preserve" x="88" y="808" class="code">    },</text>
+  <text xml:space="preserve" x="88" y="834" class="code">    {</text>
+  <text xml:space="preserve" x="88" y="860" class="code">      "use": "demo-knowledge",</text>
+  <text xml:space="preserve" x="88" y="886" class="code">      "role": "canonical"</text>
+  <text xml:space="preserve" x="88" y="912" class="code">    }</text>
+  <text xml:space="preserve" x="88" y="938" class="code">  ]</text>
+  <text xml:space="preserve" x="88" y="964" class="code">}</text>
+  <text xml:space="preserve" x="856" y="262" class="code">{</text>
+  <text xml:space="preserve" x="856" y="288" class="code">  "id": "demo-knowledge",</text>
+  <text xml:space="preserve" x="856" y="314" class="code">  "connections": {</text>
+  <text xml:space="preserve" x="856" y="340" class="code">    "local-windows": {</text>
+  <text xml:space="preserve" x="856" y="366" class="code">      "type": "filesystem",</text>
+  <text xml:space="preserve" x="856" y="392" class="code">      "path": "config/demo-knowledge"</text>
+  <text xml:space="preserve" x="856" y="418" class="code">    }</text>
+  <text xml:space="preserve" x="856" y="444" class="code">  },</text>
+  <text xml:space="preserve" x="856" y="470" class="code">  "query": {</text>
+  <text xml:space="preserve" x="856" y="496" class="code">    "adapter": "feature-manifest-v1",</text>
+  <text xml:space="preserve" x="856" y="522" class="code">    "content_root": "android_wiki"</text>
+  <text xml:space="preserve" x="856" y="548" class="code">  },</text>
+  <text xml:space="preserve" x="856" y="574" class="code">  "portal": {</text>
+  <text xml:space="preserve" x="856" y="600" class="code">    "enabled": true,</text>
+  <text xml:space="preserve" x="856" y="626" class="code">    "group": "technical"</text>
+  <text xml:space="preserve" x="856" y="652" class="code">  }</text>
+  <text xml:space="preserve" x="856" y="678" class="code">}</text>
+  <text x="856" y="759" class="body">引用对应：knowledge[].use = 知识源 id</text>
+  <text x="856" y="799" class="note">同一知识源可被多个项目复用。</text>
+  <text x="64" y="1060" class="note">已省略：源码路径、App scope、知识 targets / capabilities、同步及执行配置。</text>
+  <text x="64" y="1100" class="note">此图用于说明关系；完整配置以 config/workspace-apps.json 为准。</text>
+</svg>

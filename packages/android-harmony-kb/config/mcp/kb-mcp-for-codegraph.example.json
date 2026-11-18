@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "kb-mcp-for-codegraph": {
+      "url": "http://127.0.0.1:8421/mcp"
+    }
+  }
+}

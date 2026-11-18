@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">图片压缩：验证后择小输出</title>
+  <desc id="desc">PNG、JPEG、WebP 或 ZIP 上传后校验格式和限额，经原格式优化和无损 WebP 候选处理，按适用校验保留安全且更小的文件，生成原格式、WebP 优先、逐张择小三个结果 ZIP 与 CSV。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:26px;font-weight:700}.body{font-size:22px;fill:#526a7a}
+    .label{font-size:21px;fill:#526a7a}.note{font-size:21px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+    .line{fill:none;stroke:#6c8798;stroke-width:2.5}
+  </style>
+  <rect width="1440" height="900" fill="#fff"/>
+  <text x="64" y="72" class="title">图片压缩：验证后择小输出</text>
+  <text x="64" y="118" class="sub">保留尺寸与画面，服务器处理完成后下载三套结果</text>
+  <g><rect x="64" y="180" width="384" height="148" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+    <text x="256" y="223" text-anchor="middle" class="heading">1  上传图片</text>
+    <text x="256" y="262" text-anchor="middle" class="body">PNG / JPEG / WebP / ZIP</text>
+    <text x="256" y="295" text-anchor="middle" class="body">原项目资源不被修改</text>
+  </g>
+  <g><rect x="528" y="180" width="384" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="720" y="223" text-anchor="middle" class="heading">2  校验与解码</text>
+    <text x="720" y="262" text-anchor="middle" class="body">格式、文件数、体积与像素</text>
+    <text x="720" y="295" text-anchor="middle" class="body">动画及特殊颜色情况保守保留</text>
+  </g>
+  <g><rect x="992" y="180" width="384" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="1184" y="223" text-anchor="middle" class="heading">3  生成候选</text>
+    <text x="1184" y="262" text-anchor="middle" class="body">原格式：oxipng / jpegtran 等</text>
+    <text x="1184" y="295" text-anchor="middle" class="body">跨格式：无损 WebP</text>
+  </g>
+  <path d="M448 255H528" class="arrow"/>
+  <path d="M912 255H992" class="arrow"/>
+  <path d="M1184 328V403H720V447" class="arrow"/>
+  <g><rect x="528" y="447" width="384" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="720" y="490" text-anchor="middle" class="heading">4  验证与择小</text>
+    <text x="720" y="529" text-anchor="middle" class="body">跨格式严格像素校验</text>
+    <text x="720" y="562" text-anchor="middle" class="body">不满足要求或不更小则留原件</text>
+  </g>
+  <path d="M720 595V637H256V684" class="arrow"/>
+  <path d="M720 637V684" class="arrow"/>
+  <path d="M720 637H1184V684" class="arrow"/>
+  <g><rect x="64" y="684" width="384" height="112" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="256" y="727" text-anchor="middle" class="heading">原格式优化 ZIP</text>
+    <text x="256" y="766" text-anchor="middle" class="body">保持原文件格式</text>
+  </g>
+  <g><rect x="528" y="684" width="384" height="112" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="720" y="727" text-anchor="middle" class="heading">WebP 优先 ZIP</text>
+    <text x="720" y="766" text-anchor="middle" class="body">合格且更小时使用 WebP</text>
+  </g>
+  <g><rect x="992" y="684" width="384" height="112" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="1184" y="727" text-anchor="middle" class="heading">逐张择小 ZIP</text>
+    <text x="1184" y="766" text-anchor="middle" class="body">每张选最小合格候选</text>
+  </g>
+  <text x="64" y="477" class="heading">后台工具</text>
+  <text x="64" y="521" class="note">Python + Pillow</text>
+  <text x="64" y="562" class="note">oxipng / cwebp / jpegtran</text>
+  <text x="64" y="848" class="note">同时提供 CSV 体积对比；不缩放、不裁边、不减色。资源节省量不等于 APP / HAP 节省量。</text>
+</svg>

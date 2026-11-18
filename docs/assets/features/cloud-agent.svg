@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1410" viewBox="0 0 1280 1410" role="img" aria-labelledby="title desc">
+  <title id="title">转译流程：八大环节与交付产物</title>
+  <desc id="desc">需求分析、方案确认、代码转译、代码审查、构建验证、设备验收、提测交接、知识回流，以纵向箭头连接。每个环节列出核心产物，橙色表示包含人工确认。需要范围和 UI 审批、视觉确认、本地复核、知识 MR 审核或补充材料时，通过企业微信群通知并 @ 创建人；没有创建人或映射时通知默认联系人，消息包含当前环节、待办和任务链接。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L8 5L1 9Z" fill="#82949b"/></marker>
+  </defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#20343c;letter-spacing:0}
+    .title{font-size:34px;font-weight:700}
+    .subtitle{font-size:20px;fill:#52676f}
+    .column{font-size:20px;font-weight:700;fill:#52676f}
+    .heading{font-size:27px;font-weight:700}
+    .detail{font-size:19px;fill:#52676f}
+    .output{font-size:21px}
+    .action{font-size:21px;font-weight:700;fill:#14746c}
+    .manual{fill:#99420f}
+    .number{font-size:19px;font-weight:700;fill:#fff;text-anchor:middle}
+    .flow{fill:none;stroke:#82949b;stroke-width:2;marker-end:url(#arrow)}
+    .note{font-size:19px;fill:#52676f}
+  </style>
+  <rect width="1280" height="1410" fill="#fff"/>
+  <text x="40" y="62" class="title">转译流程：八大环节与交付产物</text>
+  <text x="40" y="104" class="subtitle">工作台负责编排与交接，Harness 执行工程流程。</text>
+  <circle cx="811" cy="97" r="9" fill="#b85317"/>
+  <text x="832" y="104" class="subtitle">人工确认 · 企业微信通知</text>
+  <path d="M40 138H1240" stroke="#cfdadd"/>
+  <text x="150" y="177" class="column">主要环节</text>
+  <text x="516" y="177" class="column">核心产物</text>
+  <text x="918" y="177" class="column">人工参与</text>
+  <g id="step-1" transform="translate(0 200)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#f3f7f8"/>
+    <path d="M492 16V100M894 16V100" stroke="#dbe4e6"/>
+    <circle cx="98" cy="54" r="23" fill="#14746c"/>
+    <text x="98" y="61" class="number">01</text>
+    <text x="150" y="47" class="heading">需求分析</text>
+    <text x="150" y="83" class="detail">材料收集、源码查证与范围分析</text>
+    <text x="516" y="45" class="output">需求范围、验收清单</text>
+    <text x="516" y="81" class="output">证据引用、待确认问题</text>
+    <text x="918" y="31" class="action">自动分析</text>
+    <text x="918" y="64" class="detail">创建人提供需求文字和附件</text>
+    <text x="918" y="95" class="detail">需澄清时企微通知补充</text>
+  </g>
+  <g id="step-2" transform="translate(0 328)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#fff7eb"/>
+    <rect x="40" width="4" height="116" rx="2" fill="#b85317"/>
+    <path d="M492 16V100M894 16V100" stroke="#ead7bb"/>
+    <circle cx="98" cy="54" r="23" fill="#b85317"/>
+    <text x="98" y="61" class="number">02</text>
+    <text x="150" y="47" class="heading">方案确认</text>
+    <text x="150" y="83" class="detail">范围审批与 UI 基线确认</text>
+    <text x="516" y="45" class="output">需求方案、逐状态 HTML 原型</text>
+    <text x="516" y="81" class="output">范围与 UI 审批记录</text>
+    <text x="918" y="31" class="action manual">企微通知 → 人工确认方案</text>
+    <text x="918" y="64" class="detail">先确认范围，再确认 UI 基线</text>
+    <text x="918" y="95" class="detail">无 UI 时确认不适用</text>
+  </g>
+  <g id="step-3" transform="translate(0 456)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#f3f7f8"/>
+    <path d="M492 16V100M894 16V100" stroke="#dbe4e6"/>
+    <circle cx="98" cy="54" r="23" fill="#14746c"/>
+    <text x="98" y="61" class="number">03</text>
+    <text x="150" y="47" class="heading">代码转译</text>
+    <text x="150" y="83" class="detail">实现鸿蒙功能，接通真实调用链</text>
+    <text x="516" y="45" class="output">鸿蒙代码、资源与配置</text>
+    <text x="516" y="81" class="output">变更清单、需求到代码的映射</text>
+    <text x="918" y="31" class="action">自动执行</text>
+    <text x="918" y="64" class="detail">在当前任务特性分支实现</text>
+    <text x="918" y="95" class="detail">遵循已批准的范围与 UI</text>
+  </g>
+  <g id="step-4" transform="translate(0 584)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#fafcfc"/>
+    <path d="M492 16V100M894 16V100" stroke="#dbe4e6"/>
+    <circle cx="98" cy="54" r="23" fill="#14746c"/>
+    <text x="98" y="61" class="number">04</text>
+    <text x="150" y="47" class="heading">代码审查</text>
+    <text x="150" y="83" class="detail">独立审查，修复后重审</text>
+    <text x="516" y="45" class="output">代码审查报告</text>
+    <text x="516" y="81" class="output">问题清单与修复记录</text>
+    <text x="918" y="31" class="action">自动独立审查</text>
+    <text x="918" y="64" class="detail">不是人工审批环节</text>
+    <text x="918" y="95" class="detail">有效审查通过后才能构建</text>
+  </g>
+  <g id="step-5" transform="translate(0 712)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#f3f7f8"/>
+    <path d="M492 16V100M894 16V100" stroke="#dbe4e6"/>
+    <circle cx="98" cy="54" r="23" fill="#14746c"/>
+    <text x="98" y="61" class="number">05</text>
+    <text x="150" y="47" class="heading">构建验证</text>
+    <text x="150" y="83" class="detail">编译、签名与产物校验</text>
+    <text x="516" y="45" class="output">签名 HAP / HSP</text>
+    <text x="516" y="81" class="output">构建日志、产物哈希</text>
+    <text x="918" y="31" class="action">自动构建</text>
+    <text x="918" y="64" class="detail">产物绑定当前源码</text>
+    <text x="918" y="95" class="detail">构建失败定向修复与重验</text>
+  </g>
+  <g id="step-6" transform="translate(0 840)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#fff7eb"/>
+    <rect x="40" width="4" height="116" rx="2" fill="#b85317"/>
+    <path d="M492 16V100M894 16V100" stroke="#ead7bb"/>
+    <circle cx="98" cy="54" r="23" fill="#b85317"/>
+    <text x="98" y="61" class="number">06</text>
+    <text x="150" y="47" class="heading">设备验收</text>
+    <text x="150" y="83" class="detail">场景执行、取证与独立复核</text>
+    <text x="516" y="45" class="output">设备结论、功能与视觉报告</text>
+    <text x="516" y="81" class="output">截图 / 连续帧 / 录屏等证据</text>
+    <text x="918" y="31" class="action manual">企微通知 → 视觉人审</text>
+    <text x="918" y="64" class="detail">适用时核对逐状态效果</text>
+    <text x="918" y="95" class="detail">保留「通过 / 未完成」真实结论</text>
+  </g>
+  <g id="step-7" transform="translate(0 968)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#fff7eb"/>
+    <rect x="40" width="4" height="116" rx="2" fill="#b85317"/>
+    <path d="M492 16V100M894 16V100" stroke="#ead7bb"/>
+    <circle cx="98" cy="54" r="23" fill="#b85317"/>
+    <text x="98" y="61" class="number">07</text>
+    <text x="150" y="47" class="heading">提测交接</text>
+    <text x="150" y="83" class="detail">发布分支、本地复核与确认提测</text>
+    <text x="516" y="45" class="output">远程特性分支、分支文档</text>
+    <text x="516" y="81" class="output">确认后生成集成单；代码 MR</text>
+    <text x="918" y="31" class="action manual">企微通知 → 本地复核</text>
+    <text x="918" y="64" class="detail">复核后点击「确认提测」</text>
+    <text x="918" y="95" class="detail">代码 MR 由团队审核合入</text>
+  </g>
+  <g id="step-8" transform="translate(0 1096)">
+    <rect x="40" width="1200" height="116" rx="6" fill="#fff7eb"/>
+    <rect x="40" width="4" height="116" rx="2" fill="#b85317"/>
+    <path d="M492 16V100M894 16V100" stroke="#ead7bb"/>
+    <circle cx="98" cy="54" r="23" fill="#b85317"/>
+    <text x="98" y="61" class="number">08</text>
+    <text x="150" y="47" class="heading">知识回流</text>
+    <text x="150" y="83" class="detail">代码合入后生成知识变更</text>
+    <text x="516" y="45" class="output">业务知识、双端映射、知识 MR</text>
+    <text x="516" y="81" class="output">知识合入后完成回流</text>
+    <text x="918" y="31" class="action manual">企微通知 → 知识 MR 审核</text>
+    <text x="918" y="64" class="detail">严格验收通过且代码已合入</text>
+    <text x="918" y="95" class="detail">自动生成知识 MR，人工合入</text>
+  </g>
+  <path d="M98 279V356" class="flow"/>
+  <path d="M98 407V484" class="flow"/>
+  <path d="M98 535V612" class="flow"/>
+  <path d="M98 663V740" class="flow"/>
+  <path d="M98 791V868" class="flow"/>
+  <path d="M98 919V996" class="flow"/>
+  <path d="M98 1047V1124" class="flow"/>
+  <path d="M40 1240H1240" stroke="#cfdadd"/>
+  <text x="40" y="1282" class="note">企业微信：群内 @ 创建人，无创建人或映射时通知默认联系人；附当前环节、待办与任务链接。</text>
+  <text x="40" y="1320" class="note">提测交接：等待本地复核时通知；确认提测后才创建集成单，成功不重复通知。</text>
+  <text x="40" y="1358" class="note">设备未完成可携缺项交接，但不代表验收通过，也不生成通过版知识 MR；工程门禁仍须有效。</text>
+</svg>

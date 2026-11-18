@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1105" viewBox="0 0 1600 1105" role="img" aria-labelledby="title desc">
+  <title id="title">转译执行：工作台、OpenCode 与 Harness</title><desc id="desc">用户任务和人工决定经数据库进入 Worker。Worker 启动隔离 OpenCode，模型经任务 MCP 调用工具。工具检查权限版本审批，调用 Harness Python 或平台适配器执行 Git 构建 HDC。状态、日志、报告与哈希回到任务。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:25px;font-weight:700}.body{font-size:21px}.note{font-size:20px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+  </style>
+  <rect width="1600" height="1105" fill="#fff"/>
+  <text x="64" y="72" class="title">转译执行：工作台、OpenCode 与 Harness</text>
+  <text x="64" y="118" class="sub">工作台调度，模型调用受控工具，原始执行结果成为证据</text>
+  <rect x="64" y="180" width="432" height="148" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+  <text x="86" y="219" class="heading">1  用户 / 业务 API</text>
+  <text x="86" y="259" class="body">需求、材料、App、目标分支</text>
+  <text x="86" y="291" class="body">人工决定绑定版本与审核包</text>
+  <rect x="584" y="180" width="432" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text x="606" y="219" class="heading">2  数据库任务与 Run</text>
+  <text x="606" y="259" class="body">Task / Run / Event / Approval</text>
+  <text x="606" y="291" class="body">Worker 认领并续租</text>
+  <rect x="1104" y="180" width="432" height="148" rx="8" fill="#fff8e8" stroke="#e6d59f"/>
+  <text x="1126" y="219" class="heading">3  Worker 编排</text>
+  <text x="1126" y="259" class="body">固定快照与任务工作树</text>
+  <text x="1126" y="291" class="body">准备 Harness 档案和工具集</text>
+  <path d="M496 254H584" class="arrow"/>
+  <path d="M1016 254H1104" class="arrow"/>
+  <path d="M1320 328V376H280V430" class="arrow"/>
+  <rect x="64" y="430" width="432" height="180" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="86" y="469" class="heading">4  隔离 OpenCode</text>
+  <text x="86" y="509" class="body">动态端口 + 独立 XDG</text>
+  <text x="86" y="541" class="body">调用配置的模型网关</text>
+  <text x="86" y="573" class="body">按分析 / 编码 / 复核分职责</text>
+  <rect x="584" y="430" width="432" height="180" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="606" y="469" class="heading">5  任务 MCP / 适配器</text>
+  <text x="606" y="509" class="body">只暴露该角色的 task_* 工具</text>
+  <text x="606" y="541" class="body">校验范围、版本、审批与互斥</text>
+  <text x="606" y="573" class="body">返回真实结果，保存操作身份</text>
+  <rect x="1104" y="430" width="432" height="180" rx="8" fill="#fff8e8" stroke="#e6d59f"/>
+  <text x="1126" y="469" class="heading">6  原生执行</text>
+  <text x="1126" y="509" class="body">外部 Harness Python CLI</text>
+  <text x="1126" y="541" class="body">Git / DevEco / OHPM / Hvigor</text>
+  <text x="1126" y="573" class="body">HDC / 模拟器 / 设备执行器</text>
+  <path d="M496 520H584" class="arrow"/>
+  <path d="M1016 520H1104" class="arrow"/>
+  <path d="M1320 610V660H800V710" class="arrow"/>
+  <rect x="584" y="710" width="952" height="146" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text x="606" y="749" class="heading">7  状态与证据归档</text>
+  <text x="606" y="789" class="body">Harness：阶段、门禁、执行账本与原始收据</text>
+  <text x="606" y="821" class="body">工作台：任务状态、事件、产物路径、版本与哈希</text>
+  <text x="64" y="752" class="heading">结果返回工具调用者</text>
+  <text x="64" y="795" class="body">模型继续查证；页面读取当前状态</text>
+  <rect y="903" width="1600" height="185" fill="#f6f8fa"/>
+  <text x="64" y="946" class="heading">人工与交付边界</text>
+  <text x="64" y="988" class="body">等待人工时释放模型实例；批准后 Worker 登记决定并继续，模型不能代批。</text>
+  <text x="64" y="1030" class="body">设备形成 passed / incomplete 结论后交接提测；失败和缺证据保留，开发确认本地复核后进入集成台。</text>
+  <text x="64" y="1067" class="note">task MCP 是任务专用执行入口，与知识库的三个通用 MCP 不同。</text>
+</svg>

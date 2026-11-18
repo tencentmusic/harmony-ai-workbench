@@ -1,0 +1,159 @@
+.root {
+  color: #2f2f2f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.dark {
+  color: #dce7ff;
+}
+
+.root p {
+  margin: 0 0 10px;
+  white-space: pre-wrap;
+}
+
+.root ul,
+.root ol {
+  margin: 0 0 10px;
+  padding-left: 22px;
+}
+
+.root table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 12px;
+}
+
+.tableWrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.root th,
+.root td {
+  border: 1px solid #d8dce2;
+  padding: 6px 8px;
+  vertical-align: top;
+  min-width: 160px;
+  word-break: break-word;
+}
+
+.dark th,
+.dark td {
+  border-color: rgba(126, 154, 208, 0.36);
+}
+
+.root a {
+  color: #2d7ef7;
+}
+
+.inlineCode {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #e7eaef;
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.dark .inlineCode {
+  background: rgba(93, 115, 162, 0.28);
+  color: #eff5ff;
+}
+
+.codeBlock {
+  margin: 10px 0;
+  border: 1px solid #d9dfe8;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.dark .codeBlock {
+  border-color: rgba(126, 154, 208, 0.32);
+  background: #0d1527;
+}
+
+.codeHeader {
+  height: 36px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #eff2f6;
+  border-bottom: 1px solid #dce3ec;
+}
+
+.dark .codeHeader {
+  background: #141f36;
+  border-bottom-color: rgba(126, 154, 208, 0.32);
+}
+
+.codeLang {
+  color: #6e7688;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.dark .codeLang {
+  color: #a9bddf;
+}
+
+.codeBody {
+  display: block;
+  overflow-x: auto;
+  padding: 12px;
+  color: #1f2937;
+  white-space: pre;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.codeBody::-webkit-scrollbar {
+  height: 6px;
+}
+
+.codeBody::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.codeBody::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark .codeBody {
+  color: #e5eeff;
+  scrollbar-color: rgba(148, 163, 184, 0.58) transparent;
+}
+
+.dark .codeBody::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.58);
+}
+
+.loading > :last-child::after {
+  content: "_";
+  display: inline-block;
+  margin-left: 3px;
+  font-weight: 700;
+  color: #4f9e5f;
+  animation: blink 1s steps(5, start) infinite;
+}
+
+.inlineImage {
+  max-width: min(100%, 320px);
+  height: auto;
+  border-radius: 10px;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+

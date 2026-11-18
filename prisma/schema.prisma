@@ -1,0 +1,552 @@
+// 表结构唯一权威来源。任何新增/修改表、字段、索引必须先改此文件，再 npm run db:push。
+// 规范见仓库根 README.md §5「数据库与 Schema 规范」。
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CloudAgentTask {
+  id             String @id @default(cuid())
+  appId          String
+  title          String
+  material       String
+  materialVersion Int @default(1)
+  attachmentIds  String @default("[]")
+  targetBranch   String
+  model          String @default("gpt-6-astra")
+  source         String @default("manual")
+  sourceUrl      String?
+  originKey      String? @unique
+  sourceSnapshot String @default("{}")
+  creatorId      String?
+  status         String @default("queued")
+  revision       Int @default(1)
+  harnessJson    String @default("{}")
+  stage          String @default("")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  runs           CloudAgentRun[]
+  events         CloudAgentEvent[]
+  approvals      CloudAgentApproval[]
+  attachments    CloudAgentAttachment[]
+  @@index([appId, updatedAt])
+  @@index([status, createdAt])
+}
+
+model CloudAgentNotification {
+  id          String @id @default(cuid())
+  identity    String @unique
+  taskId      String
+  stateKey    String
+  status      String @default("queued")
+  attempts    Int @default(0)
+  nextAttempt DateTime @default(now())
+  leaseToken  String?
+  leaseUntil  DateTime?
+  attemptedAt DateTime?
+  sentAt      DateTime?
+  error       String?
+  createdAt   DateTime @default(now())
+  @@index([status, nextAttempt])
+  @@index([taskId])
+}
+
+model CloudAgentDeliveryWatch {
+  taskId      String @id
+  nextAttempt DateTime @default(now())
+  failures    Int @default(0)
+  error       String?
+  updatedAt   DateTime @updatedAt
+}
+
+model CloudAgentRun {
+  id           String @id @default(cuid())
+  taskId       String
+  task         CloudAgentTask @relation(fields: [taskId], references: [id])
+  revision     Int
+  kind         String @default("analysis")
+  harnessJson  String @default("{}")
+  status       String @default("running")
+  input        String
+  materialVersion Int @default(1)
+  materialSnapshot String @default("")
+  attachmentSnapshot String @default("[]")
+  baseSha      String?
+  output       String @default("")
+  digest       String?
+  error        String?
+  leaseToken   String
+  leaseUntil   DateTime
+  instanceJson String @default("{}")
+  createdAt    DateTime @default(now())
+  finishedAt   DateTime?
+  @@unique([taskId, revision])
+  @@index([status, leaseUntil])
+}
+
+model CloudAgentEvent {
+  id        Int @id @default(autoincrement())
+  taskId    String
+  task      CloudAgentTask @relation(fields: [taskId], references: [id])
+  runId     String?
+  kind      String
+  message   String
+  createdAt DateTime @default(now())
+  @@index([taskId, id])
+}
+
+model CloudAgentAttachment {
+  id        String @id
+  appId     String
+  ownerId   String
+  taskId    String?
+  task      CloudAgentTask? @relation(fields: [taskId], references: [id])
+  name      String
+  mime      String
+  kind      String
+  size      Int
+  sha256    String @default("")
+  status    String @default("uploading")
+  createdAt DateTime @default(now())
+  @@index([ownerId, createdAt])
+  @@index([taskId])
+}
+
+model CloudAgentApproval {
+  id        String @id @default(cuid())
+  taskId    String
+  task      CloudAgentTask @relation(fields: [taskId], references: [id])
+  revision  Int
+  actorId   String
+  digest    String
+  decision  String
+  reason    String
+  payload   String @default("{}")
+  createdAt DateTime @default(now())
+  @@unique([taskId, revision])
+}
+
+model CloudAgentInbox {
+  id           String @id @default(cuid())
+  identity     String @unique
+  payload      String
+  status       String @default("queued")
+  attempts     Int @default(0)
+  error        String?
+  nextAttempt  DateTime @default(now())
+  leaseUntil   DateTime?
+  leaseToken   String?
+  createdAt    DateTime @default(now())
+  @@index([status, nextAttempt])
+}
+
+model ApiToken {
+  id         String    @id @default(cuid())
+  label      String?
+  personName String
+  personCode String
+  tokenHash  String    @unique
+  revokedAt  DateTime?
+  expiresAt  DateTime?
+  createdAt  DateTime  @default(now())
+  jobs       ConversionJob[]
+  feedbacks  UserFeedback[]
+  models     ModelConfig[]
+  createdIntegrationTasks IntegrationTask[]      @relation("IntegrationTaskCreator")
+  integrationTaskEvents   IntegrationTaskEvent[] @relation("IntegrationTaskEventActor")
+  updatedIntegrationArtifactReviewNotes IntegrationArtifact[]  @relation("IntegrationArtifactReviewNoteUpdater")
+}
+
+model AllowedModulePrefix {
+  id        String   @id @default(cuid())
+  prefix    String   @unique
+  enabled   Boolean  @default(true)
+  note      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ModelConfig {
+  id           String   @id @default(cuid())
+  displayName  String
+  baseUrl      String
+  model        String
+  apiKeyCipher String
+  createdAt    DateTime @default(now())
+  ownerTokenId String?  @map("owner_token_id")
+  ownerToken   ApiToken? @relation(fields: [ownerTokenId], references: [id])
+}
+
+model ConversionJob {
+  id             String    @id @default(cuid())
+  module         String
+  classFqn       String
+  modelId        String
+  status         String
+  output         String?
+  error          String?
+  sourcePath     String?
+  finishedAt     DateTime?
+  outputPurgedAt DateTime?
+  createdAt      DateTime  @default(now())
+  apiTokenId     String?
+  apiToken       ApiToken? @relation(fields: [apiTokenId], references: [id])
+}
+
+model UserFeedback {
+  id         String   @id
+  content    String
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+  apiTokenId String?  @map("api_token_id")
+  apiToken   ApiToken? @relation(fields: [apiTokenId], references: [id])
+
+  @@map("user_feedback")
+}
+
+model AndroidClassIndex {
+  className    String @map("class_name")
+  fqn          String
+  module       String
+  relativePath String @id @map("relative_path")
+  filePath     String @map("file_path")
+
+  @@index([fqn], map: "idx_aci_fqn")
+  @@index([className], map: "idx_aci_class_name")
+  @@index([module], map: "idx_aci_module")
+  @@map("android_class_index")
+}
+
+model AndroidClassIndexMeta {
+  key   String  @id
+  value String?
+
+  @@map("android_class_index_meta")
+}
+
+model ChatSession {
+  id        String @id
+  tokenId   String @map("token_id")
+  title     String
+  createdAt String @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+  updatedAt String @default(dbgenerated("CURRENT_TIMESTAMP")) @map("updated_at")
+
+  @@index([tokenId, updatedAt(sort: Desc)], map: "idx_chat_sessions_token_updated")
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id        String  @id
+  sessionId String  @map("session_id")
+  role      String
+  content   String
+  metadata  String?
+  createdAt String  @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+
+  @@index([sessionId, createdAt], map: "idx_chat_messages_session_created")
+  @@map("chat_messages")
+}
+
+model ConversionJobContext {
+  jobId         String  @id @map("job_id")
+  sessionId     String? @map("session_id")
+  userPrompt    String? @map("user_prompt")
+  mode          String?
+  citationsJson String? @map("citations_json")
+  createdAt     String  @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+
+  @@map("conversion_job_contexts")
+}
+
+model ApiTokenAppScope {
+  tokenId    String @map("token_id")
+  appScopeId String @map("app_scope_id")
+  createdAt  String @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+
+  @@id([tokenId, appScopeId])
+  @@index([tokenId], map: "idx_api_token_app_scopes_token")
+  @@map("api_token_app_scopes")
+}
+
+model OpencodeRequest {
+  id                String  @id
+  apiTokenId        String  @map("api_token_id")
+  chatSessionId     String? @map("chat_session_id")
+  opencodeSessionId String? @map("opencode_session_id")
+  appScopeId        String? @map("app_scope_id")
+  module            String
+  classFqn          String  @map("class_fqn")
+  userPrompt        String  @map("user_prompt")
+  assistantOutput   String? @map("assistant_output")
+  modelName         String? @map("model_name")
+  status            String
+  error             String?
+  createdAt         String  @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+  finishedAt        String? @map("finished_at")
+
+  @@index([apiTokenId, createdAt(sort: Desc)], map: "idx_opencode_requests_token_created")
+  @@index([status, createdAt(sort: Desc)], map: "idx_opencode_requests_status_created")
+  @@map("opencode_requests")
+}
+
+model DocAnalyticsEvent {
+  id          String @id
+  apiTokenId  String @map("api_token_id")
+  event       String
+  docPath     String @map("doc_path")
+  payloadJson String? @map("payload_json")
+  createdAt   String @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+
+  @@index([event, createdAt(sort: Desc)], map: "idx_doc_analytics_event_created")
+  @@index([docPath, createdAt(sort: Desc)], map: "idx_doc_analytics_doc_created")
+  @@index([apiTokenId, createdAt(sort: Desc)], map: "idx_doc_analytics_token_created")
+  @@map("doc_analytics_events")
+}
+
+model KbTelemetryEvent {
+  id          String  @id
+  eventType   String  @map("event_type")
+  ts          String
+  traceId     String? @map("trace_id")
+  turnId      String? @map("turn_id")
+  consumer    String
+  projectId   String? @map("project_id")
+  featureId   String? @map("feature_id")
+  kbVersion   String? @map("kb_version")
+  payloadJson String  @map("payload_json")
+  createdAt   String  @default(dbgenerated("CURRENT_TIMESTAMP")) @map("created_at")
+
+  @@index([eventType, ts(sort: Desc)], map: "idx_kb_tel_type_ts")
+  @@index([featureId, ts(sort: Desc)], map: "idx_kb_tel_feature")
+  @@index([consumer, ts(sort: Desc)], map: "idx_kb_tel_consumer")
+  @@index([traceId, ts(sort: Desc)], map: "idx_kb_tel_trace")
+  @@map("kb_telemetry_events")
+}
+
+model KbSyncRun {
+  id             String   @id @default(cuid())
+  domain         String
+  mode           String
+  operator       String?
+  kbGitRev       String?  @map("kb_git_rev")
+  canonicalHash  String?  @map("canonical_hash")
+  resultJson     String   @map("result_json")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@index([domain, createdAt(sort: Desc)], map: "idx_kb_sync_domain_created")
+  @@map("kb_sync_runs")
+}
+
+model RepoSyncRun {
+  id           String    @id @default(cuid())
+  repoId       String    @map("repo_id")
+  repoPath     String    @map("repo_path")
+  branch       String
+  trigger      String
+  commitSha    String?   @map("commit_sha")
+  status       String
+  gitRevBefore String?   @map("git_rev_before")
+  gitRevAfter  String?   @map("git_rev_after")
+  resultJson   String    @map("result_json")
+  errorMessage String?   @map("error_message")
+  startedAt    DateTime? @map("started_at")
+  finishedAt   DateTime? @map("finished_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  deploymentId String?   @map("deployment_id")
+
+  @@index([repoId, createdAt(sort: Desc)], map: "idx_repo_sync_repo_created")
+  @@index([status, createdAt(sort: Desc)], map: "idx_repo_sync_status_created")
+  @@map("repo_sync_runs")
+}
+
+model IntegrationTask {
+  id               String                 @id @default(cuid())
+  title            String
+  projectId        String
+  sourceBranch     String
+  targetBranch     String
+  scopePath        String?
+  featureDesc      String?
+  status           String
+  automationStatus String
+  createdByTokenId String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  creator          ApiToken?              @relation("IntegrationTaskCreator", fields: [createdByTokenId], references: [id], onDelete: SetNull)
+  runs             IntegrationRun[]
+  events           IntegrationTaskEvent[]
+
+  @@index([projectId])
+  @@index([status])
+  @@index([automationStatus])
+}
+
+model IntegrationRun {
+  id                       String                @id @default(cuid())
+  taskId                   String
+  stage                    String
+  sequence                 Int
+  triggerKey               String                @unique
+  status                   String
+  baseSha                  String?
+  headSha                  String?
+  targetTipSha             String?
+  diffHash                 String?
+  claimOwner               String?
+  claimEpoch               Int                   @default(0)
+  claimExpiresAt           DateTime?
+  worktreeStatus           String                @default("none")
+  worktreePath             String?
+  worktreeLeaseCipher      String?
+  opencodeDisposedAt       DateTime?
+  opencodeDisposeErrorCode String?
+  opencodeDisposeError     String?
+  errorCode                String?
+  error                    String?
+  cleanupStatus            String                @default("not_ready")
+  cleanupSafeAt            DateTime?
+  cleanupCompletedAt       DateTime?
+  cleanupErrorCode         String?
+  cleanupError             String?
+  startedAt                DateTime?
+  finishedAt               DateTime?
+  createdAt                DateTime              @default(now())
+  updatedAt                DateTime              @updatedAt
+  task                     IntegrationTask       @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  artifacts                IntegrationArtifact[]
+
+  @@unique([taskId, sequence])
+  @@index([taskId])
+  @@index([status])
+  @@index([status, claimExpiresAt])
+  @@index([cleanupStatus, claimExpiresAt])
+}
+
+model IntegrationArtifact {
+  id                        String         @id @default(cuid())
+  runId                     String
+  type                      String
+  status                    String         @default("queued")
+  outputPath                String
+  skillName                 String
+  skillDigest               String?
+  opencodeSessionId         String?        @unique
+  promptState               String         @default("not_submitted")
+  promptSubmittedAt         DateTime?
+  promptAcceptedAt          DateTime?
+  promptAcceptanceUnknownAt DateTime?
+  promptRejectedAt          DateTime?
+  abortRequestedAt          DateTime?
+  abortRespondedAt          DateTime?
+  abortAccepted             Boolean?
+  abortErrorCode            String?
+  abortError                String?
+  terminalAckSource         String?
+  terminalAckAt             DateTime?
+  sessionDeletedAt          DateTime?
+  sessionDeleteErrorCode    String?
+  sessionDeleteError        String?
+  content                   String?
+  conclusion                String?
+  reviewNote                String?
+  reviewNoteUpdatedAt       DateTime?
+  reviewNoteUpdatedByTokenId String?
+  errorCode                 String?
+  error                     String?
+  startedAt                 DateTime?
+  finishedAt                DateTime?
+  createdAt                 DateTime       @default(now())
+  updatedAt                 DateTime       @updatedAt
+  run                       IntegrationRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  reviewNoteUpdatedBy       ApiToken?      @relation("IntegrationArtifactReviewNoteUpdater", fields: [reviewNoteUpdatedByTokenId], references: [id], onDelete: SetNull)
+
+  @@unique([runId, type])
+  @@index([status])
+  @@index([runId, status])
+  @@index([reviewNoteUpdatedByTokenId])
+}
+
+model IntegrationTaskEvent {
+  id           String          @id @default(cuid())
+  taskId       String
+  fromStatus   String?
+  toStatus     String
+  actorTokenId String?
+  createdAt    DateTime        @default(now())
+  task         IntegrationTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  actorToken   ApiToken?       @relation("IntegrationTaskEventActor", fields: [actorTokenId], references: [id], onDelete: SetNull)
+
+  @@index([taskId, createdAt])
+}
+
+// 包体对比：输入、规则、每轮结果和人工审核均保留版本。
+model PackageArtifact {
+  id          String   @id
+  projectId   String
+  name        String
+  size        BigInt
+  sha256      String
+  metadataJson String
+  createdBy   String
+  createdAt   DateTime @default(now())
+  purgedAt    DateTime?
+  @@index([projectId, createdAt])
+}
+
+model PackageComparison {
+  id               String @id
+  projectId        String
+  title            String
+  inputJson        String
+  baselineId       String
+  currentId        String
+  revision         Int @default(1)
+  explanationJson  String @default("{}")
+  explanationVersion Int @default(1)
+  reviewStatus     String @default("draft")
+  createdBy        String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  runs             PackageAnalysis[]
+  reviews          PackageReview[]
+  @@index([projectId, createdAt])
+}
+
+model PackageAnalysis {
+  id          String @id
+  taskId      String
+  version     Int
+  status      String @default("queued")
+  progress    Int @default(0)
+  resultJson  String?
+  error       String?
+  leaseUntil  DateTime?
+  createdAt   DateTime @default(now())
+  finishedAt  DateTime?
+  task        PackageComparison @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  @@unique([taskId, version])
+  @@index([status, createdAt])
+}
+
+model PackageReview {
+  id              String @id
+  taskId          String
+  analysisId      String
+  analysisVersion Int
+  explanationVersion Int
+  baselineId      String
+  currentId       String
+  explanationJson String
+  status          String
+  reason          String
+  actorId         String
+  actorName       String
+  createdAt       DateTime @default(now())
+  task            PackageComparison @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  @@index([taskId, createdAt])
+}

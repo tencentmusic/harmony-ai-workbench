@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title desc">
+  <title id="title">转译台技术架构：编排、推理与工程校验闭环</title>
+  <desc id="desc">工作台 API 保存任务与人工决定，Worker 从数据库认领任务并启动隔离 OpenCode。模型只调用任务 MCP，经权限、版本和审批校验后访问源码知识、Harness 与构建设备能力。结果回传模型，Worker 在回合结束后核验原生状态，有剩余工作则续行，需要人工则等待。SQLite 与文件证据分别持久化平台状态和工程事实。人工确认提测后创建集成单，严格交付通过并核实代码合入后生成知识 MR。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9Z" fill="#536779"/></marker>
+    <marker id="return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9Z" fill="#137b71"/></marker>
+  </defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;letter-spacing:0;fill:#24323e}
+    .title{font-size:36px;font-weight:700}
+    .subtitle{font-size:22px;fill:#5b6b78}
+    .heading{font-size:26px;font-weight:700}
+    .body{font-size:21px;fill:#455766}
+    .label{font-size:18px;fill:#5b6b78}
+    .eyebrow{font-size:18px;font-weight:700;fill:#5b6b78}
+    .human{font-size:19px;fill:#a35b17}
+    .flow{fill:none;stroke:#536779;stroke-width:2;marker-end:url(#arrow)}
+    .exchange{fill:none;stroke:#536779;stroke-width:2;marker-start:url(#arrow);marker-end:url(#arrow)}
+    .feedback{fill:none;stroke:#137b71;stroke-width:2;stroke-dasharray:7 5;marker-end:url(#return)}
+  </style>
+  <rect width="1600" height="1080" fill="#fff"/>
+  <text x="48" y="63" class="title">转译台技术架构</text>
+  <text x="48" y="104" class="subtitle">工作台管调度，模型做查证与实现，Harness 以真实证据校验进度</text>
+  <path d="M48 137H1552" stroke="#dce3e8"/>
+
+  <text x="48" y="181" class="eyebrow">交互与审批</text>
+  <text x="446" y="181" class="eyebrow">流程编排</text>
+  <text x="844" y="181" class="eyebrow">模型执行</text>
+  <text x="1242" y="181" class="eyebrow">受控工具入口</text>
+
+  <g id="web">
+    <rect x="48" y="210" width="310" height="240" rx="8" fill="#f7f8fa" stroke="#cfd8df"/>
+    <text x="72" y="256" class="heading">工作台 Web / API</text>
+    <text x="72" y="301" class="body">任务材料 · 进度与证据</text>
+    <text x="72" y="336" class="body">鉴权 · 保存人工决定</text>
+    <path d="M72 360H334" stroke="#d7dee4"/>
+    <text x="72" y="394" class="human" font-weight="700">人工：范围 / UI / 视觉</text>
+    <text x="72" y="425" class="human">本地复核后确认提测</text>
+  </g>
+  <g id="worker">
+    <rect x="446" y="210" width="310" height="240" rx="8" fill="#edf4ff" stroke="#afc8e8"/>
+    <text x="470" y="256" class="heading">任务编排 Worker</text>
+    <text x="470" y="301" class="body">认领任务 · 租约与恢复</text>
+    <text x="470" y="336" class="body">按原生状态选择下一步</text>
+    <path d="M470 360H732" stroke="#c6d9ee"/>
+    <text x="470" y="394" class="body">可执行 → 自动续行</text>
+    <text x="470" y="425" class="body">需人审 → 等待并通知</text>
+  </g>
+  <g id="opencode">
+    <rect x="844" y="210" width="310" height="240" rx="8" fill="#edf4ff" stroke="#afc8e8"/>
+    <text x="868" y="256" class="heading">OpenCode + 模型</text>
+    <text x="868" y="301" class="body">查证 · 编码 · 选择工具</text>
+    <text x="868" y="336" class="body">同职责复用有效上下文</text>
+    <path d="M868 360H1130" stroke="#c6d9ee"/>
+    <text x="868" y="394" class="body">代码审查 / 设备复核</text>
+    <text x="868" y="425" class="body">使用隔离职责会话</text>
+  </g>
+  <g id="task-mcp">
+    <rect x="1242" y="210" width="310" height="240" rx="8" fill="#eaf7f2" stroke="#9ecdbb"/>
+    <text x="1266" y="256" class="heading">任务 MCP</text>
+    <text x="1266" y="301" class="body">仅开放 task_* 工具</text>
+    <text x="1266" y="336" class="body">校验角色 · 路径 · 版本</text>
+    <path d="M1266 360H1528" stroke="#bcded0"/>
+    <text x="1266" y="394" class="body">校验审批后执行</text>
+    <text x="1266" y="425" class="body">返回真实结果与证据</text>
+  </g>
+  <path d="M358 314H446" class="flow"/>
+  <text x="402" y="280" text-anchor="middle" class="label">入库</text>
+  <text x="402" y="301" text-anchor="middle" class="label">认领</text>
+  <path d="M756 314H844" class="flow"/>
+  <text x="800" y="295" text-anchor="middle" class="label">调度</text>
+  <path d="M1154 314H1242" class="exchange"/>
+  <text x="1198" y="280" text-anchor="middle" class="label">调用</text>
+  <text x="1198" y="301" text-anchor="middle" class="label">回传</text>
+
+  <path d="M999 450V501H601V450" class="feedback"/>
+  <text x="800" y="535" text-anchor="middle" font-size="20" fill="#137b71">回合结束 → 核验 Harness 状态 → 续行或等待</text>
+
+  <path d="M1397 450V571H276" fill="none" stroke="#536779" stroke-width="2"/>
+  <path d="M276 571V624" class="flow"/>
+  <path d="M800 571V624" class="flow"/>
+  <path d="M1324 571V624" class="flow"/>
+  <text x="48" y="602" class="eyebrow">工具适配与工程执行</text>
+  <g id="sources">
+    <rect x="48" y="624" width="456" height="182" rx="8" fill="#f7f8fa" stroke="#cfd8df"/>
+    <text x="72" y="668" class="heading">源码与知识适配</text>
+    <text x="72" y="709" class="body">Android 快照只读 · 知识检索</text>
+    <text x="72" y="745" class="body">Harmony 独立工作树受控编辑</text>
+    <text x="72" y="780" class="label">产物：源码证据、特性分支改动</text>
+  </g>
+  <g id="harness">
+    <rect x="572" y="624" width="456" height="182" rx="8" fill="#eaf7f2" stroke="#9ecdbb" stroke-width="2"/>
+    <text x="596" y="668" class="heading">Harness 规则与校验引擎</text>
+    <text x="596" y="709" class="body">Skills / CLI · 阶段与证据门禁</text>
+    <text x="596" y="745" class="body">原生待办 · 操作账本 · 验收合同</text>
+    <text x="596" y="780" class="label">产物：迁移档案、门禁与原生收据</text>
+  </g>
+  <g id="execution">
+    <rect x="1096" y="624" width="456" height="182" rx="8" fill="#f7f8fa" stroke="#cfd8df"/>
+    <text x="1120" y="668" class="heading">构建与设备执行适配</text>
+    <text x="1120" y="709" class="body">DevEco / Hvigor · HDC 执行器</text>
+    <text x="1120" y="745" class="body">按 Harness 合同构建与取证</text>
+    <text x="1120" y="780" class="label">产物：HAP、日志、截图与验收报告</text>
+  </g>
+
+  <path d="M48 841H1552" stroke="#dce3e8"/>
+  <text x="48" y="884" class="eyebrow">共享底座</text>
+  <text x="220" y="880" class="body">SQLite：任务 / 运行 / 审批 / 事件</text>
+  <text x="800" y="880" class="body">文件：材料 / 原生档案 / 证据 / 会话检查点</text>
+  <text x="48" y="928" class="eyebrow">项目配置</text>
+  <text x="220" y="928" class="body">workspace-apps + Profile：源码仓 · 知识源 · 模型 · 构建与设备</text>
+  <path d="M48 960H1552" stroke="#dce3e8"/>
+  <text x="48" y="1000" class="eyebrow">交付衔接</text>
+  <text x="220" y="1000" class="body">发布特性分支 → 人工确认提测 → 集成单</text>
+  <text x="800" y="1000" class="body">代码合入核验 → 知识 MR（严格验收通过后）</text>
+  <text x="48" y="1043" class="label">箭头表示逻辑调用 / 调度；工具结果沿调用链返回。模型总结不能替代人工批准或工程验收事实。</text>
+</svg>

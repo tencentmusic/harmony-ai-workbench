@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">鸿蒙 AI 工作台：功能与可插拔资源总览</title>
+  <desc id="desc">源码项目和知识资源经过统一配置与适配，为 AI 员工、知识库、转译台和集成台提供上下文。运行服务与平台管理作为共享能力，独立配置。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#748291"/></marker>
+  </defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#27323e;letter-spacing:0}
+    .title{font-size:42px;font-weight:700}.sub{font-size:23px;fill:#687583}.section{font-size:24px;font-weight:600}
+    .label{font-size:26px;font-weight:600}.body{font-size:22px}.note{font-size:20px;fill:#687583}.micro{font-size:18px;fill:#687583}
+    .line{fill:none;stroke:#748291;stroke-width:2;marker-end:url(#arrow)}.border{stroke:#d4dbe2;stroke-width:1.5}
+  </style>
+  <rect width="1600" height="1000" fill="#fff"/>
+  <text x="64" y="61" class="note">01 / 功能总览</text>
+  <text x="64" y="123" class="title">鸿蒙 AI 工作台</text>
+  <text x="64" y="166" class="sub">按项目配置源码与知识，复用统一的研发协作能力</text>
+  <text x="1536" y="64" text-anchor="end" class="micro">资源接入 → 配置装配 → 功能使用</text>
+  <line x1="64" y1="198" x2="1536" y2="198" stroke="#e3e7ec"/>
+
+  <text x="64" y="246" class="section">接入资源</text>
+  <text x="544" y="246" class="section">统一配置与适配</text>
+  <text x="1028" y="246" class="section">工作台核心功能</text>
+
+  <rect x="64" y="274" width="396" height="186" rx="8" fill="#f4f8fc" class="border"/>
+  <rect x="64" y="294" width="4" height="40" fill="#4777a2"/>
+  <text x="90" y="319" class="label">源码项目</text>
+  <text x="90" y="361" class="body">示例项目：独立双端仓库</text>
+  <text x="90" y="397" class="body">多 App 示例：共享源码仓库</text>
+  <text x="90" y="436" class="note">仓库路径 · 分支基线 · 模块范围</text>
+  <rect x="64" y="486" width="396" height="186" rx="8" fill="#f2f8f5" class="border"/>
+  <rect x="64" y="506" width="4" height="40" fill="#39846b"/>
+  <text x="90" y="531" class="label">知识资源</text>
+  <text x="90" y="573" class="body">业务知识 · 迁移案例</text>
+  <text x="90" y="609" class="body">双端 CodeGraph · 其他知识源</text>
+  <text x="90" y="648" class="note">项目专属 / 跨项目共享</text>
+
+  <path d="M460 367H498V473H544" class="line"/>
+  <path d="M460 579H498V473" fill="none" stroke="#748291" stroke-width="2"/>
+
+  <rect x="544" y="274" width="400" height="398" rx="8" fill="#f8f8f9" class="border"/>
+  <text x="572" y="319" class="label">登记一次，多处复用</text>
+  <text x="572" y="354" class="note">workspace-apps.json</text>
+  <line x1="572" y1="376" x2="916" y2="376" stroke="#dce1e6"/>
+  <text x="572" y="414" class="body">项目与 App</text><text x="572" y="445" class="note">绑定双端源码，划定访问范围</text>
+  <text x="572" y="490" class="body">知识源组合</text><text x="572" y="521" class="note">按项目引用共享或专属知识</text>
+  <text x="572" y="566" class="body">环境与同步</text><text x="572" y="597" class="note">本地 / 测试服路径与分支同步</text>
+  <text x="572" y="645" class="micro">新接入协议按需扩展适配器</text>
+  <path d="M944 473H988M988 317V629" fill="none" stroke="#748291" stroke-width="2"/>
+  <path d="M988 317H1028" class="line"/><path d="M988 421H1028" class="line"/>
+  <path d="M988 525H1028" class="line"/><path d="M988 629H1028" class="line"/>
+  <text x="986" y="291" text-anchor="middle" class="micro">按需装配</text>
+
+  <rect x="1028" y="274" width="508" height="86" rx="8" fill="#f4f8fc" class="border"/>
+  <text x="1054" y="310" class="label">AI 员工</text>
+  <text x="1054" y="342" class="note">业务分析 · 源码检索 · 双端差异 · 编码辅助</text>
+  <rect x="1028" y="378" width="508" height="86" rx="8" fill="#f2f8f5" class="border"/>
+  <text x="1054" y="414" class="label">知识库</text>
+  <text x="1054" y="446" class="note">文档与案例 · 浏览搜索 · 携带上下文问 AI</text>
+  <rect x="1028" y="482" width="508" height="86" rx="8" fill="#faf7f2" class="border"/>
+  <text x="1054" y="518" class="label">转译台</text>
+  <text x="1054" y="550" class="note">需求确认 · 转译审查 · 构建验收 · 分支交接</text>
+  <rect x="1028" y="586" width="508" height="86" rx="8" fill="#f7f5fa" class="border"/>
+  <text x="1054" y="622" class="label">集成台</text>
+  <text x="1054" y="654" class="note">提测 · 代码评审 · 测试修复 · 人工合入</text>
+
+  <line x1="64" y1="728" x2="1536" y2="728" stroke="#dce1e6"/>
+  <text x="64" y="774" class="section">共享运行与管理</text>
+  <text x="64" y="822" class="body">执行支撑</text>
+  <text x="222" y="822" class="body">OpenCode / 模型 · Skills / MCP · Harness · 构建与模拟器</text>
+  <text x="64" y="867" class="body">平台管理</text>
+  <text x="222" y="867" class="body">权限与审计 · 执行记录 · 源码同步 · 数据看板</text>
+  <text x="64" y="933" class="note">执行环境独立配置；源码按 App 授权，知识门户按自身访问规则提供。</text>
+  <text x="1536" y="967" text-anchor="end" class="micro">项目与知识的具体绑定关系见图 02</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1150" viewBox="0 0 1600 1150" role="img" aria-labelledby="title desc">
+  <title id="title">知识库：文档门户与三个 MCP 的访问关系</title>
+  <desc id="desc">文档门户直接读取业务知识和迁移案例。AI 员工通过 OpenCode、本地 Agent 通过 stdio 调用本地知识 MCP 查询知识、案例与双端图谱。驻场 MCP 使用工作台 Token 查询授权范围的知识、案例、Android 图谱与源码。双端图谱 MCP 无 Token 鉴权，只提供 Android 和 HarmonyOS 图谱，不提供文档和源码正文。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:27px;font-weight:700}.body{font-size:23px}
+    .id{font-size:24px;fill:#176bb1}.note{font-size:21px;fill:#647785}
+    .column{font-size:22px;font-weight:600;fill:#526a7a}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+  </style>
+  <rect width="1600" height="1150" fill="#fff"/>
+  <text x="64" y="72" class="title">知识库：文档门户与三个 MCP</text>
+  <text x="64" y="119" class="sub">按入口选择能力，区分知识内容、代码图谱与源码正文</text>
+  <text x="64" y="187" class="column">谁在使用</text>
+  <text x="444" y="187" class="column">通过什么入口</text>
+  <text x="984" y="187" class="column">可以查询什么</text>
+  <path d="M64 204H1536" stroke="#d0dce5"/>
+  <g>
+    <text x="64" y="267" class="heading">浏览器用户</text>
+    <text x="64" y="309" class="note">登录后访问 /knowledge</text>
+    <path d="M370 302H429" class="arrow"/>
+    <rect x="444" y="225" width="468" height="148" rx="8" fill="#f8fafc" stroke="#c3d9ed"/>
+    <text x="468" y="263" class="heading">知识门户</text>
+    <text x="468" y="304" class="id">工作台直接读取内容仓</text>
+    <text x="468" y="344" class="note">目录 / 搜索 / 正文 / 图片</text>
+    <path d="M912 302H969" class="arrow"/>
+    <text x="984" y="265" class="body">业务知识文档 + 迁移案例</text>
+    <text x="984" y="301" class="body">如 manifest 知识源、外部迁移案例仓</text>
+    <text x="984" y="344" class="note">门户目录不按源码 App 权限裁剪</text>
+  </g>
+  <g>
+    <text x="64" y="449" class="heading">AI 员工 / 本地 Agent</text>
+    <text x="64" y="491" class="note">AI 员工经 OpenCode 调用</text>
+    <text x="64" y="525" class="note">本地 Agent 可直接挂载</text>
+    <path d="M370 484H429" class="arrow"/>
+    <rect x="444" y="407" width="468" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="468" y="445" class="heading">本地知识 MCP</text>
+    <text x="468" y="486" class="id">android-harmony-kb-mcp</text>
+    <text x="468" y="526" class="note">stdio · 读取当前运行环境的资源</text>
+    <path d="M912 484H969" class="arrow"/>
+    <text x="984" y="447" class="body">业务知识 + 案例 + 双端 CodeGraph</text>
+    <text x="984" y="483" class="body">双端代码地图</text>
+    <text x="984" y="526" class="note">源码正文由 Agent 按工作区权限另行读取</text>
+  </g>
+  <g>
+    <text x="64" y="631" class="heading">Cursor / Codex 等</text>
+    <text x="64" y="673" class="note">远程查询服务器资源</text>
+    <text x="64" y="707" class="note">使用工作台 Token</text>
+    <path d="M370 666H429" class="arrow"/>
+    <rect x="444" y="589" width="468" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="468" y="627" class="heading">驻场 MCP</text>
+    <text x="468" y="668" class="id">kb-mcp-for-zc</text>
+    <text x="468" y="708" class="note">HTTP · Token / App 授权范围</text>
+    <path d="M912 666H969" class="arrow"/>
+    <text x="984" y="629" class="body">业务知识 + 案例 + Android CodeGraph</text>
+    <text x="984" y="665" class="body">受控 Android 源码与 drawable 资源</text>
+    <text x="984" y="708" class="note">不提供 HarmonyOS 图谱或源码读取</text>
+  </g>
+  <g>
+    <text x="64" y="813" class="heading">Cursor / Codex 等</text>
+    <text x="64" y="855" class="note">远程查询双端代码关系</text>
+    <path d="M370 848H429" class="arrow"/>
+    <rect x="444" y="771" width="468" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="468" y="809" class="heading">双端图谱 MCP</text>
+    <text x="468" y="850" class="id">kb-mcp-for-codegraph</text>
+    <text x="468" y="890" class="note">HTTP · 当前服务无 Token 鉴权</text>
+    <path d="M912 848H969" class="arrow"/>
+    <text x="984" y="811" class="body">Android / HarmonyOS CodeGraph</text>
+    <text x="984" y="847" class="body">符号、调用链、影响面与索引状态</text>
+    <text x="984" y="890" class="note">不读取文档和源码正文；不按 App scope 裁剪</text>
+  </g>
+  <rect y="965" width="1600" height="185" fill="#f6f8fa"/>
+  <text x="64" y="1008" class="column">上下文与配置</text>
+  <text x="64" y="1053" class="body">文档「问 AI」：将原文、路径和映射 App 交给 AI 员工；源码查询仍校验 App 权限。</text>
+  <text x="64" y="1095" class="body">workspace-apps.json 绑定项目、知识源和机器路径；CodeGraph 查询各源码仓已建立的索引。</text>
+</svg>

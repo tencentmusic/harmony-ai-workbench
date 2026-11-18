@@ -1,0 +1,93 @@
+.figure {
+  margin: 10px 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.imageWrap {
+  position: relative;
+  display: inline-flex;
+  max-width: min(100%, 320px);
+}
+
+.image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 320px);
+  height: auto;
+  min-width: 48px;
+  border: 1px solid #c5ced9;
+  border-radius: 10px;
+  object-fit: contain;
+  /* 透明/浅色 drawable 在浅色气泡里需要对比底，否则看不见 */
+  background-color: #e4e9ef;
+  background-image:
+    linear-gradient(45deg, #d0d7e0 25%, transparent 25%),
+    linear-gradient(-45deg, #d0d7e0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #d0d7e0 75%),
+    linear-gradient(-45deg, transparent 75%, #d0d7e0 75%);
+  background-size: 12px 12px;
+  background-position:
+    0 0,
+    0 6px,
+    6px -6px,
+    -6px 0;
+}
+
+.downloadBtn {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.downloadBtn:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.88);
+  transform: translateY(-1px);
+}
+
+.downloadBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.caption {
+  color: #6e7688;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.loading,
+.fallback {
+  min-height: 48px;
+  min-width: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #c5ced9;
+  background-color: #e4e9ef;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 8px 0 12px;
+}

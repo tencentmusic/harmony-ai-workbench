@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "autoupdate": false,
+  "model": "sub2api/gpt-5.6-luna",
+  "small_model": "sub2api/gpt-5.6-luna",
+  "provider": {
+    "sub2api": {
+      "npm": "@ai-sdk/openai",
+      "name": "公司 Sub2API",
+      "env": ["SUB2API_API_KEY", "OPENAI_API_KEY"],
+      "options": {
+        "baseURL": "https://model-gateway.example/v1",
+        "apiKey": "{env:SUB2API_API_KEY}"
+      },
+      "models": {
+        "gpt-5.6-luna": {
+          "name": "GPT 5.6 Luna"
+        }
+      }
+    }
+  },
+  "snapshot": false,
+  "plugin": [],
+  "mcp": {},
+  "skills": {
+    "paths": [],
+    "urls": []
+  },
+  "lsp": false,
+  "formatter": false,
+  "permission": {
+    "*": "deny"
+  }
+}

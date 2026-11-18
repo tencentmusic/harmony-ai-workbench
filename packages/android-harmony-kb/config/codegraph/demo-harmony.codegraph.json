@@ -1,0 +1,4 @@
+{
+  "include": ["entry/**"],
+  "exclude": ["**/build/**", "**/oh_modules/**", "**/test/**", "**/ohosTest/**"]
+}

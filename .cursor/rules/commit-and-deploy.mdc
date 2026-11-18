@@ -1,0 +1,14 @@
+---
+description: 工台提交与部署：release 只收 MR、禁止在部署分支开发、禁止测试服云开发
+alwaysApply: true
+---
+
+# 提交与部署（强制）
+
+改代码、部署、SSH、合分支前，**必须先阅读**[开发规范的 Git 协作与部署章节](../../docs/engineering/development.md#git-协作与部署)并遵守。
+
+- **合入目标**：`release`（只收 MR）
+- **禁止** 在 `release` 上直接开发、commit、push；从 `origin/release` 拉 `feature/*` 或 `fix/*`。
+- **禁止** SSH 测试服云开发；**必须** 特性分支自测 → MR 合入 `release` → Webhook 部署 → URL 验收。
+
+Codex / Claude Code 同步见根目录 [`AGENTS.md`](../../AGENTS.md)、[`CLAUDE.md`](../../CLAUDE.md)。

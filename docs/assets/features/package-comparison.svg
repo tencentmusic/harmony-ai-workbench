@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+  <title id="title">包体对比：增量定位与人工审核</title>
+  <desc id="desc">基准包、当前包和规则在建单时冻结，后台分析大小及文件内容差异，形成模块与文件报告。人工补充说明和审核后导出 Markdown 或 CSV。内外层独立统计。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:26px;font-weight:700}.body{font-size:22px;fill:#526a7a}
+    .label{font-size:21px;fill:#526a7a}.note{font-size:21px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+    .line{fill:none;stroke:#6c8798;stroke-width:2.5}
+  </style>
+  <rect width="1440" height="860" fill="#fff"/>
+  <text x="64" y="72" class="title">包体对比：增量定位与人工审核</text>
+  <text x="64" y="118" class="sub">两份同格式 APP / HAP → 分析差异 → 说明原因 → 审核与导出</text>
+  <g><rect x="64" y="180" width="384" height="148" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+    <text x="256" y="223" text-anchor="middle" class="heading">1  输入与规则</text>
+    <text x="256" y="262" text-anchor="middle" class="body">基准包 + 当前包（同格式）</text>
+    <text x="256" y="295" text-anchor="middle" class="body">App、范围、构建信息与预算</text>
+  </g>
+  <g><rect x="528" y="180" width="384" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="720" y="223" text-anchor="middle" class="heading">2  后台分析</text>
+    <text x="720" y="262" text-anchor="middle" class="body">冻结输入和规则快照</text>
+    <text x="720" y="295" text-anchor="middle" class="body">独立 Node 子进程解析归档</text>
+  </g>
+  <g><rect x="992" y="180" width="384" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="1184" y="223" text-anchor="middle" class="heading">3  差异定位</text>
+    <text x="1184" y="262" text-anchor="middle" class="body">总体 → 模块 / 业务 → 文件</text>
+    <text x="1184" y="295" text-anchor="middle" class="body">大小、SHA256、超预算风险</text>
+  </g>
+  <path d="M448 255H528" class="arrow"/>
+  <path d="M912 255H992" class="arrow"/>
+  <path d="M1184 328V434" class="arrow"/>
+  <g><rect x="992" y="434" width="384" height="148" rx="8" fill="#fff8e8" stroke="#e6d59f"/>
+    <text x="1184" y="477" text-anchor="middle" class="heading">4  人工说明与审核</text>
+    <text x="1184" y="516" text-anchor="middle" class="body">填写用途、增长与保留原因</text>
+    <text x="1184" y="549" text-anchor="middle" class="body">需补充 / 通过 / 不通过</text>
+  </g>
+  <g><rect x="528" y="434" width="384" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="720" y="477" text-anchor="middle" class="heading">5  报告导出</text>
+    <text x="720" y="516" text-anchor="middle" class="body">Markdown：摘要与关键文件</text>
+    <text x="720" y="549" text-anchor="middle" class="body">CSV：全部变更</text>
+  </g>
+  <path d="M992 508H912" class="arrow"/>
+  <text x="64" y="468" class="heading">例如：比较一次需求前后的 HAP</text>
+  <text x="64" y="514" class="note">定位新增图片和原生库占用，</text>
+  <text x="64" y="551" class="note">补充保留理由后交给负责人审核。</text>
+  <rect y="650" width="1440" height="160" fill="#f6f8fa"/>
+  <text x="64" y="695" class="heading">统计口径</text>
+  <text x="64" y="739" class="note">整包以实际文件字节数为准；APP 外层与内层 HAP / HSP 分别对账，不能相加。</text>
+  <text x="64" y="780" class="note">分析只读取归档，不执行包内程序；报告与人工审核绑定对应版本。</text>
+</svg>

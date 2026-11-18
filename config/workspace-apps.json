@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.1",
+  "description": "通用 Android → HarmonyOS 工作区示例配置。请在本地环境文件或私有配置中登记真实项目。",
+  "runtime": {
+    "default_profile": "local-windows",
+    "profile_env": "WORKSPACE_PROFILE"
+  },
+  "shared_knowledge_bases": [
+    {
+      "id": "android-harmony-kb",
+      "label": "Android-Harmony 双端知识库",
+      "provider": "android-harmony-kb",
+      "enabled": true,
+      "workspace_alias": "harmony-kb",
+      "connection": { "type": "workspace-package", "path": "packages/android-harmony-kb" },
+      "capabilities": ["feature-context", "codegraph", "counterpart", "migration-wiki", "mcp"]
+    },
+    {
+      "id": "migration-cases",
+      "label": "HarmonyOS 迁移案例",
+      "provider": "markdown-corpus",
+      "role": "evidence",
+      "enabled": true,
+      "workspace_alias": "migration-cases",
+      "connections": {
+        "local-windows": { "type": "filesystem", "path": "config/demo-migration" },
+        "test-server": { "type": "filesystem", "path": "config/demo-migration" }
+      },
+      "query": { "content_root": "docs" },
+      "portal": { "enabled": true, "group": "migration", "label": "HarmonyOS 迁移案例", "access": "authenticated", "tree_root": "migration" },
+      "capabilities": ["browse", "document-search", "ask-ai", "migration-wiki"]
+    },
+    {
+      "id": "demo-knowledge",
+      "label": "示例项目知识库",
+      "provider": "manifest-filesystem",
+      "role": "canonical",
+      "enabled": true,
+      "workspace_alias": "demo-knowledge",
+      "connection": { "type": "workspace-package", "path": "config/demo-knowledge" },
+      "query": {
+        "adapter": "feature-manifest-v1",
+        "content_root": ".",
+        "project_targets": { "demo-project": ["demo.android", "demo.harmony"] }
+      },
+      "capabilities": ["document-search", "mcp-query"]
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "demo-project",
+      "kb_project_id": "demo-project",
+      "label": "示例双端项目",
+      "status": "active",
+      "sources": {
+        "android": {
+          "source_id": "demo-android",
+          "label": "示例 Android 源码",
+          "workspace_alias": "android-src",
+          "index_mode": "scoped",
+          "index_roots": ["src"],
+          "locations": { "local-windows": { "path": "../demo-android" }, "test-server": { "path": "../demo-android" } },
+          "branch": "main",
+          "sync": { "remote_match": ["example/demo-android"], "branches": ["main"] }
+        },
+        "harmony": {
+          "source_id": "demo-harmony",
+          "label": "示例 HarmonyOS 源码",
+          "workspace_alias": "harmony-src",
+          "index_mode": "scoped",
+          "index_roots": ["entry"],
+          "locations": { "local-windows": { "path": "../demo-harmony" }, "test-server": { "path": "../demo-harmony" } },
+          "branch": "main",
+          "sync": { "remote_match": ["example/demo-harmony"], "branches": ["main"] }
+        }
+      },
+      "apps": [
+        {
+          "app_id": "DemoApp",
+          "label": "示例 App",
+          "status": "active",
+          "scope": { "android": { "mode": "modules", "modules": ["src"] }, "harmony": { "mode": "modules", "modules": ["entry"] } }
+        }
+      ],
+      "knowledge": [
+        { "use": "android-harmony-kb", "kb_project_id": "demo-project", "role": "codegraph" },
+        { "use": "demo-knowledge", "kb_project_id": "demo-project", "role": "canonical" },
+        { "use": "migration-cases", "kb_project_id": "demo-project", "role": "evidence" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1260" viewBox="0 0 1600 1260" role="img" aria-labelledby="title desc">
+  <title id="title">运行架构：进程、调度与外部依赖</title><desc id="desc">浏览器和 GitLab 事件进入 Next.js。问答 API 调用 4098 OpenCode，Web 内集成调度调用 4110。Web 写入 SQLite 转译任务及文件同步队列，独立 Worker 认领执行。转译使用动态 OpenCode 和外部 Harness，Repo Sync 更新源码知识和索引。共享 SQLite、产物目录与遥测。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:25px;font-weight:700}.body{font-size:21px}.note{font-size:20px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+  </style>
+  <rect width="1600" height="1260" fill="#fff"/>
+  <text x="64" y="72" class="title">运行架构：进程、调度与外部依赖</text>
+  <text x="64" y="118" class="sub">Web 内调度与独立 Worker 分开；箭头标明调用或认领方式</text>
+  <rect x="64" y="174" width="704" height="113" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+  <text x="86" y="213" class="heading">浏览器用户</text>
+  <text x="86" y="253" class="body">页面、问答、任务、审批与报告</text>
+  <rect x="832" y="174" width="704" height="113" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+  <text x="854" y="213" class="heading">GitLab / 管理入口</text>
+  <text x="854" y="253" class="body">鉴权 Webhook、手动同步与管理请求</text>
+  <path d="M416 287V329" class="arrow"/>
+  <path d="M1184 287V329" class="arrow"/>
+  <rect y="329" width="1600" height="194" fill="#f6f8fa"/>
+  <text x="64" y="368" class="heading">Next.js Web 进程 · 开发 3100 / 部署默认 8082</text>
+  <text x="64" y="411" class="body">页面 + API / BFF：身份、范围、输入校验；调用业务模块，读写状态与事件</text>
+  <text x="64" y="454" class="body">进程内调度器：集成 Run 认领 → 专用 OpenCode；包体 Run 认领 → Node 解析子进程</text>
+  <text x="64" y="494" class="note">图片压缩：API 启动 Python 子进程，任务状态留在 Web 内存；以下四列为主要业务链路</text>
+  <path d="M236 523V539" fill="none" stroke="#6c8798" stroke-width="2.5"/>
+  <path d="M236 584V605" class="arrow"/>
+  <text x="90" y="570" class="note">① 问答 HTTP / SSE</text>
+  <path d="M612 523V539" fill="none" stroke="#6c8798" stroke-width="2.5"/>
+  <path d="M612 584V605" class="arrow"/>
+  <text x="472" y="570" class="note">② 集成调度器 HTTP</text>
+  <path d="M988 523V539" fill="none" stroke="#6c8798" stroke-width="2.5"/>
+  <path d="M988 584V605" class="arrow"/>
+  <text x="855" y="570" class="note">③ SQLite 待办 / 租约</text>
+  <path d="M1364 523V539" fill="none" stroke="#6c8798" stroke-width="2.5"/>
+  <path d="M1364 584V605" class="arrow"/>
+  <text x="1224" y="570" class="note">④ 持久文件队列</text>
+  <rect x="64" y="605" width="344" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="86" y="644" class="heading">AI 员工 OpenCode</text>
+  <text x="86" y="684" class="body">固定 :4098</text>
+  <text x="86" y="716" class="body">只读工作区、知识工具</text>
+  <rect x="440" y="605" width="344" height="148" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="462" y="644" class="heading">集成 OpenCode</text>
+  <text x="462" y="684" class="body">固定 :4110</text>
+  <text x="462" y="716" class="body">独立 XDG 与报告会话</text>
+  <rect x="816" y="605" width="344" height="148" rx="8" fill="#fff8e8" stroke="#e6d59f"/>
+  <text x="838" y="644" class="heading">转译 Worker</text>
+  <text x="838" y="684" class="body">独立常驻，认领任务 Run</text>
+  <text x="838" y="716" class="body">管理租约、审批与交接</text>
+  <rect x="1192" y="605" width="344" height="148" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text x="1214" y="644" class="heading">Repo Sync Worker</text>
+  <text x="1214" y="684" class="body">独立常驻，消费文件队列</text>
+  <text x="1214" y="716" class="body">按仓库路径互斥更新</text>
+  <path d="M236 753V808" class="arrow"/>
+  <path d="M612 753V808" class="arrow"/>
+  <path d="M988 753V808" class="arrow"/>
+  <path d="M1364 753V808" class="arrow"/>
+  <rect x="64" y="808" width="344" height="179" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="86" y="847" class="heading">模型 + 知识 / 源码</text>
+  <text x="86" y="887" class="body">模型网关、本地知识 MCP</text>
+  <text x="86" y="919" class="body">知识仓、双端 CodeGraph</text>
+  <text x="86" y="951" class="body">按 App 范围读取源码</text>
+  <rect x="440" y="808" width="344" height="179" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+  <text x="462" y="847" class="heading">模型 + Git 快照</text>
+  <text x="462" y="887" class="body">模型网关、受控 Skills</text>
+  <text x="462" y="919" class="body">detached worktree</text>
+  <text x="462" y="951" class="body">生成审查 / 测试用例报告</text>
+  <rect x="816" y="808" width="344" height="179" rx="8" fill="#fff8e8" stroke="#e6d59f"/>
+  <text x="838" y="847" class="heading">任务执行环境</text>
+  <text x="838" y="887" class="body">动态 OpenCode + task MCP</text>
+  <text x="838" y="919" class="body">Harness Python / 构建工具</text>
+  <text x="838" y="951" class="body">HDC + 模拟器 / 执行收据</text>
+  <rect x="1192" y="808" width="344" height="179" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+  <text x="1214" y="847" class="heading">更新对象</text>
+  <text x="1214" y="887" class="body">源码 / 知识内容仓</text>
+  <text x="1214" y="919" class="body">类索引 / CodeGraph</text>
+  <text x="1214" y="951" class="body">按配置触发部署动作</text>
+  <rect y="1030" width="1600" height="218" fill="#f6f8fa"/>
+  <text x="64" y="1072" class="heading">共享资源与旁路服务</text>
+  <text x="64" y="1116" class="body">业务状态：Prisma / SQLite；大文件：材料、工作树、构建、报告与设备证据目录。</text>
+  <text x="64" y="1156" class="body">遥测：OpenCode 事件 → 遥测桥 / 工具上报 → 工作台 API → 数据库与管理看板。</text>
+  <text x="64" y="1196" class="body">外部 Agent 可独立访问 HTTP MCP :8420 / :8421；它们不是转译任务的 task MCP。</text>
+  <text x="64" y="1230" class="note">结果沿调用链返回；运行状态由工作台 API 提供给页面。独立进程不等于所有状态都在进程内。</text>
+</svg>

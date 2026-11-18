@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "feature_id": "demo_feature",
+      "title": "示例功能",
+      "canonical_readme": "wiki/features/demo/README.md",
+      "applies_to": ["demo.android", "demo.harmony"]
+    }
+  ]
+}

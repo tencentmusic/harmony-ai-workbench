@@ -1,0 +1,31 @@
+.ranges {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: #f2f4f8;
+  flex: 0 0 auto;
+}
+
+.ranges button {
+  border: 0;
+  background: transparent;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ranges button:hover {
+  color: #3451d1;
+}
+
+.ranges button[aria-selected="true"] {
+  background: #e8eeff;
+  color: #3451d1;
+  font-weight: 600;
+}

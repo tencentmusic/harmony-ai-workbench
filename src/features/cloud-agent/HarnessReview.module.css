@@ -1,0 +1,55 @@
+.modal :global(.ant-modal-content) { padding: 20px 24px 16px; }
+.modal :global(.ant-modal-body) { min-height: 0; }
+.modal :global(.ant-modal-footer) { margin-top: 0; padding-top: 14px; border-top: 1px solid #e5e7eb; }
+.layout { display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: start; min-height: 180px; }
+.layout.expanded { grid-template-columns: minmax(0, 1fr); }
+.navigation { position: sticky; top: var(--task-toolbar-height, 40px); align-self: start; max-height: calc(var(--task-scroll-height, 80dvh) - var(--task-toolbar-height, 40px) - 8px); overflow: auto; padding: 8px 8px 12px 0; border-right: 1px solid #e5e7eb; background: #fff; }
+.navigation[hidden] { display: none; }
+.navigation button { display: flex; align-items: baseline; gap: 10px; width: 100%; border: 0; border-radius: 4px; padding: 10px 12px; background: transparent; color: #4b5563; font: inherit; font-size: 13px; line-height: 1.5; text-align: left; cursor: pointer; overflow-wrap: anywhere; }
+.navigation button:hover { background: #f3f4f6; }
+.navigation button[aria-current] { background: #edf4ff; color: #2869bd; font-weight: 600; box-shadow: inset 3px 0 #377bd4; }
+.navigation button:focus-visible, .viewport:focus-visible { outline: 2px solid #69b1ff; outline-offset: -2px; }
+.number { font-size: 11px; color: #6b7280; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.viewport { min-width: 0; padding: 4px 16px 24px; }
+.section { padding: 12px 0 20px; overflow-wrap: anywhere; color: #374151; font-size: 14px; line-height: 1.8; }
+.section + .section { border-top: 1px solid #e5e7eb; }
+.section h1 { font-size: 21px; line-height: 1.4; }
+.section h2 { font-size: 17px; line-height: 1.5; margin: 0 0 14px; color: #111827; }
+.section h3 { font-size: 15px; }
+.section ul, .section ol { padding-left: 22px; }
+.section pre { max-width: 100%; overflow: auto; font-size: 12px; line-height: 1.7; }
+.section code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.table { overflow: auto; }
+.table table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.table th, .table td { border: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; }
+.table th { background: #f9fafb; }
+.raw { border-left: 3px solid #d1d5db; padding: 8px 12px; background: #f9fafb; }
+.raw summary { cursor: pointer; color: #4b5563; }
+.facts { margin: 0; }
+.facts > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+.facts dt { color: #6b7280; font-size: 13px; }
+.facts dd { margin: 0; min-width: 0; }
+.facts .facts > div { grid-template-columns: 90px minmax(0, 1fr); }
+.factList { margin: 0 0 16px; }
+.factList > li { padding: 4px 0 12px; }
+.imageReference { color: #6b7280; font-size: 12px; }
+.footer { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; flex-shrink: 0; min-height: 56px; padding: 10px 16px; border-top: 1px solid #e5e7eb; background: #fff; text-align: left; }
+.footerMeta { color: #6b7280; font-size: 12px; }
+.footerActions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.footerActions :global(.ant-checkbox-wrapper) { font-size: 13px; }
+.footerActions :global(.ant-btn) { flex-shrink: 0; }
+.files { list-style: none; padding: 0 !important; margin: 0; }
+.inline { min-width: 0; }
+.files :global(.ant-btn) { max-width: 100%; height: auto; white-space: normal; text-align: left; padding-left: 0; }
+@media (max-width: 700px) {
+  .modal :global(.ant-modal-content) { padding: 16px 12px 12px; }
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .navigation { display: flex; z-index: 3; gap: 4px; padding: 4px 0; border-right: 0; border-bottom: 1px solid #e5e7eb; max-height: 70px; }
+  .navigation button { flex: 0 0 auto; width: auto; max-width: 190px; }
+  .navigation button[aria-current] { box-shadow: inset 0 -2px #1677ff; }
+  .viewport { padding: 8px 10px 24px; }
+  .footerActions { align-items: flex-start; gap: 8px; }
+  .footer { grid-template-columns: minmax(0, 1fr); padding: 8px 10px; gap: 4px; }
+  .footerActions > :global(.ant-btn) { margin-left: auto; }
+  .facts > div, .facts .facts > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}

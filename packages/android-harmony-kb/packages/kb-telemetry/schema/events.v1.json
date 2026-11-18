@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kb-telemetry/events.v1.json",
+  "title": "KB Telemetry Event Envelope v1.1",
+  "type": "object",
+  "required": ["schema_version", "event_id", "event_type", "ts", "actor", "kb", "payload"],
+  "properties": {
+    "schema_version": { "const": "1.1" },
+    "event_id": { "type": "string", "format": "uuid" },
+    "event_type": {
+      "enum": [
+        "kb.context_served",
+        "kb.artifact_read",
+        "kb.match_attempt",
+        "kb.tool_call",
+        "kb.graph_query",
+        "kb.vector_query",
+        "session.turn_closed"
+      ]
+    },
+    "ts": { "type": "string", "format": "date-time" },
+    "session": {
+      "type": "object",
+      "properties": {
+        "trace_id": { "type": "string" },
+        "turn_id": { "type": "string" },
+        "parent_event_id": { "type": ["string", "null"] },
+        "host_session_id": { "type": ["string", "null"] }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "required": ["consumer"],
+      "properties": {
+        "consumer": {
+          "enum": [
+            "workbench-bff",
+            "opencode",
+            "cursor",
+            "codex",
+            "mcp-direct",
+            "opencode-bridge",
+            "ingest",
+            "benchmark"
+          ]
+        },
+        "user_hash": { "type": "string" },
+        "api_token_id": { "type": "string" }
+      }
+    },
+    "kb": {
+      "type": "object",
+      "properties": {
+        "project_id": { "type": "string" },
+        "kb_version": { "type": "string" },
+        "kb_root_hash": { "type": "string" }
+      }
+    },
+    "feature_id": { "type": "string" },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "delivery": {
+          "enum": [
+            "bff_prompt_inject",
+            "bff_intent_only",
+            "mcp_tool",
+            "codegraph_mcp",
+            "agent_native",
+            "test"
+          ]
+        },
+        "retrieval_mode": {
+          "enum": ["kb_pack", "codegraph_index", "vector_index", "raw_scan"]
+        },
+        "tool_family": {
+          "enum": ["feature_context", "codegraph", "vector_search", "agent_native", "other"]
+        },
+        "tool_name": { "type": "string" },
+        "query_symbol": { "type": "string" },
+        "platform": { "type": "string" },
+        "result_count": { "type": "integer" },
+        "hit": { "type": "boolean" },
+        "error": { "type": ["string", "null"] },
+        "response_chars": { "type": "integer" },
+        "latency_ms": { "type": "integer" },
+        "substitute_level": { "enum": ["L1", "L2", "L3"] },
+        "cohort": {
+          "enum": ["kb_only", "kb_plus_codegraph", "codegraph_only", "raw_scan", "kb_off"]
+        },
+        "retrieval_mix": {
+          "type": "array",
+          "items": { "enum": ["kb_pack", "codegraph_index", "vector_index", "raw_scan"] }
+        }
+      }
+    }
+  }
+}

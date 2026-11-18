@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="370" viewBox="0 0 1600 370" role="img" aria-labelledby="title desc">
+  <title id="title">Android 到 HarmonyOS AI 工作台里程碑</title>
+  <desc id="desc">6–7 月探索 AI 工作台并小规模试用，10+ 驻场试用，提供迁移文档 Skill、迁移文档网站查看和 AI 员工；8 月新增集成台与完善后台，20+ 驻场深度使用，AI 任务 5000+，提供 MCP、记录查询和集成 Review；9 月优化体验并探索 Harness，优化 AI 员工和知识库，新增包体对比和图片压缩；10 月支持源码与知识库灵活接入，接入 Harness 转译台并推广试用；11 月计划优化 Harness 各环节和工作台体验，推动推广共建。</desc>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;letter-spacing:0}
+    .month{font-size:28px;font-weight:700;fill:#151c25;text-anchor:middle}
+    .heading{font-size:24px;font-weight:700;fill:#151c25}
+    .body{font-size:21px;fill:#515963}
+    .plan{font-size:19px;fill:#737d89}
+  </style>
+  <rect width="1600" height="370" fill="#fff"/>
+  <path d="M40 100H1110" fill="none" stroke="#2189ff" stroke-width="3"/>
+  <path d="M1110 100H1560" fill="none" stroke="#2189ff" stroke-width="3" stroke-dasharray="9 7"/>
+
+  <g id="july">
+    <text x="180" y="62" class="month">6–7月</text>
+    <circle cx="180" cy="100" r="12" fill="#2189ff"/>
+    <text x="40" y="156" class="heading">AI 工作台探索</text>
+    <text x="40" y="192" class="heading">小规模试用</text>
+    <text x="40" y="237" class="body">10+ 驻场试用</text>
+    <text x="40" y="272" class="body">迁移文档 Skill</text>
+    <text x="40" y="307" class="body">迁移文档网站查看</text>
+    <text x="40" y="342" class="body">AI 员工</text>
+  </g>
+
+  <g id="august">
+    <text x="490" y="62" class="month">8月</text>
+    <circle cx="490" cy="100" r="12" fill="#2189ff"/>
+    <text x="350" y="156" class="heading">新增集成台与完善后台</text>
+    <text x="350" y="192" class="heading">深度使用</text>
+    <text x="350" y="237" class="body">20+ 驻场深度使用</text>
+    <text x="350" y="272" class="body">AI 任务 5000+</text>
+    <text x="350" y="307" class="body">MCP、记录可查</text>
+    <text x="350" y="342" class="body">集成 Review</text>
+  </g>
+
+  <g id="september">
+    <text x="800" y="62" class="month">9月</text>
+    <circle cx="800" cy="100" r="12" fill="#2189ff"/>
+    <text x="660" y="156" class="heading">体验优化</text>
+    <text x="660" y="192" class="heading">与 Harness 探索</text>
+    <text x="660" y="237" class="body">AI 员工、知识库体验优化</text>
+    <text x="660" y="272" class="body">包体大小对比</text>
+    <text x="660" y="307" class="body">图片压缩工具</text>
+  </g>
+
+  <g id="october">
+    <text x="1110" y="62" class="month">10月</text>
+    <circle cx="1110" cy="100" r="12" fill="#2189ff"/>
+    <text x="970" y="156" class="heading">可插拔项目配置与转译台</text>
+    <text x="970" y="192" class="heading">推广试用</text>
+    <text x="970" y="237" class="body">项目源码、知识库可插拔</text>
+    <text x="970" y="272" class="body">接入 Harness 转译台</text>
+    <text x="970" y="307" class="body">跨项目推广试用</text>
+  </g>
+
+  <g id="november">
+    <text x="1420" y="62" class="month">11月</text>
+    <text x="1466" y="61" class="plan">计划</text>
+    <circle cx="1420" cy="100" r="11" fill="#fff" stroke="#2189ff" stroke-width="3"/>
+    <text x="1280" y="156" class="heading">Harness 规则优化</text>
+    <text x="1280" y="192" class="heading">工作台推广与共建</text>
+    <text x="1280" y="237" class="body">优化 Harness 各环节痛点</text>
+    <text x="1280" y="272" class="body">持续优化工作台体验</text>
+    <text x="1280" y="307" class="body">推动跨项目共建</text>
+  </g>
+</svg>

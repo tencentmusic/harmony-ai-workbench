@@ -1,0 +1,28 @@
+.root { min-width: 0; }
+.stateBar { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 18px; border-bottom: 1px solid #e5e7eb; }
+.stateBar button { display: flex; align-items: center; gap: 8px; padding: 8px 12px 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #5b6470; font: inherit; font-size: 13px; cursor: pointer; }
+.stateBar button span { color: #87909c; font-size: 11px; }
+.stateBar button[aria-selected="true"] { color: #2469bd; background: #f0f6ff; border-bottom-color: #377bd4; font-weight: 600; }
+.stateBar button:hover { background: #f3f6f9; }
+.stateBar button:focus-visible { outline: 2px solid #69b1ff; outline-offset: -2px; }
+.comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.column { min-width: 0; }
+.column header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 10px; font-size: 13px; }
+.column header strong { color: #475569; font-weight: 600; }
+.tools { display: flex; align-items: center; gap: 8px; }
+.surface { background: #f3f4f6; padding: 10px; border: 1px solid #e2e5e9; border-radius: 4px; min-height: 240px; }
+.image { display: block; width: 100%; height: auto; margin: 0 auto; }
+.originalImage { display: block; max-width: none; height: auto; margin: 0 auto; }
+.loading { display: grid; place-items: center; min-height: 240px; }
+.warning { margin-bottom: 12px; }
+.canvas { width: 100%; min-width: 0; overflow: auto; }
+.canvasSize { position: relative; margin: 0 auto; }
+.canvas iframe { display: block; border: 0; background: white; transform-origin: top left; }
+.zoomBar { display: flex; justify-content: flex-end; padding: 4px 0 12px; }
+.expanded { height: calc(100dvh - 175px); overflow: auto; background: #f3f4f6; padding: 16px; }
+.expanded .image { width: auto; max-width: 100%; }
+@media (max-width: 900px) {
+  .comparison { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .surface { padding: 6px; }
+  .expanded { padding: 6px; }
+}

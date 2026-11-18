@@ -1,0 +1,88 @@
+.root {
+  height: 100vh;
+  padding: 0 8px 0 0;
+  background: #ececec;
+  overflow: hidden;
+}
+
+.layout {
+  height: 100vh;
+  border-radius: 0;
+  overflow: hidden;
+  background: #ececec;
+}
+
+.sider {
+  border-right: 1px solid #e5e5e5;
+  background: #f7f7f8 !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sider :global(.ant-layout-sider-children) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  padding: 12px;
+  border-bottom: 1px solid #ececec;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 12px;
+  border-top: 1px solid #ececec;
+}
+
+.logoutBtn {
+  border-radius: 10px !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475467 !important;
+  background: #fff !important;
+}
+
+.logoutBtn:hover {
+  border-color: #c7d3e3 !important;
+  color: #1f2937 !important;
+  background: #f8fafc !important;
+}
+
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.header {
+  height: 54px;
+  border-bottom: 1px solid #efefef;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.browserWrap {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.boot {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

@@ -1,0 +1,1 @@
+{"feature_id":"demo_feature","symbol":"com.example.demo.DemoEntry","class_fqn":"com.example.demo.DemoEntry","simple_name":"DemoEntry","targets":["demo.android","demo.harmony"],"read":["wiki/features/demo/README.md#入口"]}

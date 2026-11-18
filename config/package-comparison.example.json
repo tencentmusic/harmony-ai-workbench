@@ -1,0 +1,40 @@
+{
+  "example-app-a": {
+    "version": "a-v1",
+    "unit": "MiB",
+    "targetArchitectures": ["arm64-v8a"],
+    "budgetBytes": null,
+    "growthPercent": null,
+    "largeFileBytes": null,
+    "fileGrowthBytes": null,
+    "imageFileBytes": 15360,
+    "groups": [
+      {
+        "prefix": "resources/player/",
+        "name": "播放业务",
+        "owner": "业务负责人"
+      }
+    ],
+    "modules": [],
+    "categories": [
+      {
+        "category": "模型",
+        "extensions": ["onnx", "tflite"],
+        "prefix": "resources/"
+      }
+    ]
+  },
+  "example-app-b": {
+    "version": "b-v1",
+    "unit": "MB",
+    "targetArchitectures": ["arm64-v8a", "x86_64"],
+    "budgetBytes": 0,
+    "growthPercent": null,
+    "largeFileBytes": null,
+    "fileGrowthBytes": null,
+    "imageFileBytes": null,
+    "groups": [{ "prefix": "assets/", "name": "内容业务" }],
+    "modules": [{ "prefix": "assets/", "name": "内容资源" }],
+    "categories": []
+  }
+}

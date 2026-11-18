@@ -1,0 +1,166 @@
+import assert from 'node:assert/strict'
+import { createHash, randomBytes } from 'node:crypto'
+import { mkdir } from 'node:fs/promises'
+import path from 'node:path'
+import { chromium } from 'playwright-core'
+import { loadWorkbenchEnv } from './render-opencode-config.mjs'
+
+loadWorkbenchEnv()
+if (process.env.NODE_ENV === 'production' || /prod/i.test(process.env.DATABASE_URL || '')) throw new Error('Local development only')
+const id = process.argv[2]
+if (!id) throw new Error('Pass an existing task awaiting UI approval')
+const base = 'http://127.0.0.1:3100'
+const output = path.resolve('.runtime/cloud-agent-reading-verified')
+const { prisma } = await import('../src/lib/prisma.ts')
+let token, browser, page
+try {
+  await mkdir(output, { recursive: true })
+  const before = await prisma.cloudAgentTask.findUniqueOrThrow({ where: { id }, include: { approvals: true } })
+  assert.equal(before.status, 'awaiting_approval')
+  const review = JSON.parse(before.harnessJson).review
+  assert.equal(review.kind, 'ui')
+  const raw = 'hm_' + randomBytes(24).toString('hex')
+  token = await prisma.apiToken.create({ data: { personName: '阅读布局只读自测', personCode: 'reading-readonly', tokenHash: createHash('sha256').update((process.env.TOKEN_PEPPER || '') + raw).digest('hex'), expiresAt: new Date(Date.now() + 20 * 60000) } })
+  await prisma.apiTokenAppScope.create({ data: { tokenId: token.id, appScopeId: before.appId } })
+  const prototype = review.files.find(file => file.label.startsWith('prototypes/'))
+  assert.ok(prototype)
+  const warmup = await fetch(`${base}/api/cloud-agent/tasks/${id}/review-file?${new URLSearchParams({ digest: review.digest, file: prototype.id, preview: 'html' })}`, { headers: { authorization: 'Bearer ' + raw }, signal: AbortSignal.timeout(180000) })
+  assert.equal(warmup.status, 200)
+  await warmup.arrayBuffer()
+  console.log('Asset route ready')
+  browser = await chromium.launch({ channel: 'chrome', headless: true })
+  const context = await browser.newContext({ viewport: { width: 1920, height: 920 } })
+  await context.addInitScript(value => { if (window === window.top) localStorage.setItem('hm_token', value) }, raw)
+  let writes = 0
+  await context.route('**/api/cloud-agent/**', route => {
+    if (['GET', 'HEAD'].includes(route.request().method())) return route.continue()
+    writes++
+    return route.abort()
+  })
+  page = await context.newPage()
+  page.setDefaultTimeout(60000)
+  const errors = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('console', message => { if (/hydration|hydrated|didn't match/i.test(message.text())) errors.push(message.text()) })
+  await page.goto(base + '/dashboard?tab=cloud-agent', { waitUntil: 'domcontentloaded', timeout: 120000 })
+  await page.getByRole('textbox', { name: '搜索需求' }).fill(id)
+  await page.getByRole('button', { name: before.title, exact: true }).click()
+  const region = page.getByRole('region', { name: 'UI 基线审核', exact: true })
+  await region.waitFor()
+  const frame = region.locator('iframe')
+  await frame.waitFor()
+  const child = await (await frame.elementHandle()).contentFrame()
+  await child.waitForFunction(() => document.images.length > 0 && [...document.images].every(img => img.complete && img.naturalWidth > 0))
+  const root = page.locator('[aria-label="任务详情滚动区"]')
+  const nav = page.getByRole('navigation', { name: '审核章节' })
+  const footer = page.locator('[aria-label="审核操作"]')
+  const approval = page.getByRole('button', { name: '批准当前门禁' })
+  assert.equal(await approval.isEnabled(), true)
+  assert.equal(await page.getByRole('heading', { name: '云Agent', exact: true }).count(), 0)
+  const initial = await page.evaluate(() => {
+    const root = document.querySelector('[aria-label="任务详情滚动区"]')
+    const body = document.querySelector('[aria-label="审核正文"]')
+    const footer = document.querySelector('[aria-label="审核操作"]')
+    return { scrollHeight: root.clientHeight, visibleContent: footer.getBoundingClientRect().top - body.getBoundingClientRect().top, footerHeight: footer.getBoundingClientRect().height, innerOverflow: getComputedStyle(body).overflowY, pageOverflow: document.documentElement.scrollWidth > innerWidth }
+  })
+  console.log('Desktop initial', JSON.stringify(initial))
+  assert.ok(initial.visibleContent >= 550, 'At least 550px of review visible at height 920')
+  assert.ok(initial.footerHeight <= 64)
+  assert.equal(initial.innerOverflow, 'visible')
+  assert.equal(initial.pageOverflow, false)
+  await page.screenshot({ path: path.join(output, 'desktop.png') })
+  const chapters = nav.getByRole('button')
+  assert.ok(await chapters.count() > 2)
+  await chapters.nth(1).click()
+  const sectionId = await chapters.nth(1).getAttribute('aria-controls')
+  await page.waitForFunction(id => document.querySelector(`[aria-controls="${id}"]`).getAttribute('aria-current') === 'location', sectionId)
+  const position = await root.evaluate(element => element.scrollTop)
+  assert.ok(position > 0)
+  const geometry = await page.evaluate(id => {
+    const root = document.querySelector('[aria-label="任务详情滚动区"]')
+    const toolbar = root.querySelector('[data-task-toolbar]')
+    const section = document.getElementById(id)
+    return { gap: section.getBoundingClientRect().top - toolbar.getBoundingClientRect().bottom, toolbarTop: toolbar.getBoundingClientRect().top - root.getBoundingClientRect().top }
+  }, sectionId)
+  assert.ok(Math.abs(geometry.gap - 12) < 3, JSON.stringify(geometry))
+  assert.ok(Math.abs(geometry.toolbarTop) < 2)
+  await page.screenshot({ path: path.join(output, 'desktop-scrolled.png') })
+  const currentChapter = await nav.locator('[aria-current]').getAttribute('aria-controls')
+  await root.evaluate(element => { element.scrollTop = element.scrollHeight })
+  await page.waitForFunction(() => document.querySelector('[aria-label="审核章节"] button:last-child').getAttribute('aria-current') === 'location')
+  assert.notEqual(await nav.locator('[aria-current]').getAttribute('aria-controls'), currentChapter)
+  await chapters.nth(1).click()
+  await page.getByRole('button', { name: '展开阅读', exact: true }).click()
+  assert.equal(await nav.isVisible(), false)
+  assert.equal(await page.locator('[class*="CloudAgent_taskSidebar__"]').isVisible(), false)
+  assert.ok(await root.evaluate(element => element.scrollTop) > 0)
+  await page.screenshot({ path: path.join(output, 'expanded.png') })
+  await page.getByRole('button', { name: '退出展开阅读', exact: true }).click()
+  await chapters.nth(1).click()
+  const saved = await root.evaluate(element => element.scrollTop)
+  await page.getByRole('button', { name: '历史轮次', exact: true }).click()
+  await page.getByRole('button', { name: '当前环节', exact: true }).click()
+  await region.waitFor()
+  // The HTML viewer remounts on panel changes; wait for its images before measuring restoration.
+  await region.locator('iframe').waitFor()
+  const restored = await root.evaluate(element => element.scrollTop)
+  console.log('Restored position', JSON.stringify({ saved, restored }))
+  assert.ok(Math.abs(restored - saved) < 3)
+  await root.evaluate(element => { element.scrollTop = 0 })
+  await page.getByRole('button', { name: '更多任务操作' }).click()
+  await page.getByRole('menuitem', { name: '取消任务' }).click()
+  const confirm = page.getByRole('dialog')
+  await confirm.waitFor()
+  await confirm.locator('.ant-modal-confirm-title').filter({ hasText: '停止此任务？' }).waitFor()
+  await confirm.getByRole('button', { name: /^返\s*回$/ }).click()
+  await confirm.waitFor({ state: 'hidden' })
+  assert.equal(await approval.isEnabled(), true)
+  await page.setViewportSize({ width: 1366, height: 768 })
+  const compact = await page.evaluate(() => ({
+    visibleContent: document.querySelector('[aria-label="审核操作"]').getBoundingClientRect().top - document.querySelector('[aria-label="审核正文"]').getBoundingClientRect().top,
+    overflow: document.documentElement.scrollWidth > innerWidth,
+  }))
+  assert.ok(compact.visibleContent >= 420, JSON.stringify(compact))
+  assert.equal(compact.overflow, false)
+  await page.screenshot({ path: path.join(output, 'compact-desktop.png') })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await root.evaluate(element => { element.scrollTop = 0 })
+  await page.screenshot({ path: path.join(output, 'mobile.png') })
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
+  assert.equal(await page.locator('[class*="CloudAgent_taskSidebar__"]').isVisible(), false)
+  const lastChapter = chapters.last()
+  await lastChapter.click()
+  const mobileGeometry = await page.evaluate(() => {
+    const root = document.querySelector('[aria-label="任务详情滚动区"]')
+    const footer = document.querySelector('[aria-label="审核操作"]')
+    const nav = document.querySelector('[aria-label="审核章节"]')
+    return { rootBottom: root.getBoundingClientRect().bottom, footerTop: footer.getBoundingClientRect().top, navTop: nav.getBoundingClientRect().top, toolbarBottom: root.querySelector('[data-task-toolbar]').getBoundingClientRect().bottom }
+  })
+  assert.ok(mobileGeometry.rootBottom <= mobileGeometry.footerTop + 1)
+  assert.ok(Math.abs(mobileGeometry.navTop - mobileGeometry.toolbarBottom) < 2)
+  await page.screenshot({ path: path.join(output, 'mobile-scrolled.png') })
+  await page.getByRole('button', { name: '返回任务列表', exact: true }).click()
+  assert.equal(await page.locator('[class*="CloudAgent_taskSidebar__"]').isVisible(), true)
+  await page.locator('[class*="CloudAgent_taskSidebar__"]').getByRole('button').filter({ hasText: before.title }).click()
+  await region.waitFor()
+  assert.equal(await root.evaluate(element => element.scrollTop), 0)
+  assert.equal(writes, 0)
+  assert.deepEqual(errors, [])
+  const after = await prisma.cloudAgentTask.findUniqueOrThrow({ where: { id }, include: { approvals: true } })
+  assert.equal(after.revision, before.revision)
+  assert.equal(after.harnessJson, before.harnessJson)
+  assert.deepEqual(after.approvals, before.approvals)
+  console.log(JSON.stringify({ passed: true, initial, geometry, mobileGeometry, writes, errors, output }))
+} catch (error) {
+  console.error(error)
+  await page?.screenshot({ path: path.join(output, 'failure.png'), timeout: 10000 }).catch(() => {})
+  throw error
+} finally {
+  await browser?.close()
+  if (token) {
+    await prisma.apiTokenAppScope.deleteMany({ where: { tokenId: token.id } })
+    await prisma.docAnalyticsEvent.deleteMany({ where: { apiTokenId: token.id } })
+    await prisma.apiToken.delete({ where: { id: token.id } })
+  }
+  await prisma.$disconnect()
+}

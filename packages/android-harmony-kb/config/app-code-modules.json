@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "description": "通用 CodeGraph 模块清单。真实源码路径、分支和范围来自 Workbench 私有配置。",
+  "apps": [
+    {
+      "app_id": "demo-project",
+      "project_id": "demo-project",
+      "title": "示例双端项目",
+      "knowledge_prefix": "demo-project",
+      "status": "active",
+      "platforms": {
+        "android": {
+          "codegraph_config": "config/codegraph/demo-android.codegraph.json",
+          "domains": [{ "domain_id": "default", "title": "默认业务域", "modules": [{ "module_id": "android-src", "path": "src", "label": "Android 源码", "kind": "feature", "codegraph": { "enabled": true, "index_status": "pending" } }] }]
+        },
+        "harmonyos": {
+          "codegraph_config": "config/codegraph/demo-harmony.codegraph.json",
+          "domains": [{ "domain_id": "default", "title": "默认业务域", "modules": [{ "module_id": "harmony-entry", "path": "entry", "label": "HarmonyOS Entry", "kind": "host", "primary": true, "codegraph": { "enabled": true, "index_status": "pending" } }] }]
+        }
+      }
+    }
+  ]
+}

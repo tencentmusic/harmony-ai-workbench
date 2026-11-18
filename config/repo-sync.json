@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "description": "Repo Sync 通用运行参数与工作台仓库配置。真实仓库匹配规则应放在私有部署配置中。",
+  "deployment_id_env": "REPO_SYNC_DEPLOYMENT_ID",
+  "debounce_ms": 60000,
+  "queue_dir_env": "REPO_SYNC_QUEUE_DIR",
+  "workbench_repository": {
+    "id": "harmony-ai-workbench",
+    "label": "Harmony AI Workbench",
+    "remote_match": ["example/harmony-ai-workbench"],
+    "branches": ["main"],
+    "deploy_on_change": { "commands": [], "detached": true }
+  }
+}

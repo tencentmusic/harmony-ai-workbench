@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "kb-mcp-for-zc": {
+      "url": "http://127.0.0.1:8420/mcp",
+      "headers": {
+        "Authorization": "Bearer hm_YOUR_TOKEN"
+      }
+    }
+  }
+}

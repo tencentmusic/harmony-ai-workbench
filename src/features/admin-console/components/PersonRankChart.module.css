@@ -1,0 +1,61 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subtitle {
+  margin: -4px 0 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rowHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.meta {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  width: 100%;
+  margin: 0;
+}
+
+.bar :global(.ant-progress) {
+  display: block;
+  width: 100%;
+}
+
+.bar :global(.ant-progress-outer) {
+  width: 100% !important;
+}
+
+.bar :global(.ant-progress-inner) {
+  border-radius: 999px;
+}
+
+.bar :global(.ant-progress-bg) {
+  border-radius: 999px !important;
+}

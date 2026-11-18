@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "android-harmony-kb-mcp": {
+      "command": "node",
+      "args": [
+        "C:/AndroidProject/android-to-harmony/kugou-harmony-ai-workbench/packages/android-harmony-kb/scripts/mcp/harmony-kb-mcp.mjs"
+      ],
+      "env": {
+        "KB_TELEMETRY_ENABLED": "1",
+        "KB_TELEMETRY_ENDPOINT": "http://127.0.0.1:3100/api/kb-telemetry/v1/events",
+        "KB_TELEMETRY_CONSUMER": "cursor-agent"
+      }
+    }
+  }
+}

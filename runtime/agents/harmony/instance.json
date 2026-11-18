@@ -1,0 +1,26 @@
+{
+  "name": "harmony",
+  "port": 4098,
+  "host": "127.0.0.1",
+  "cwd": "${OPENCODE_WORKSPACE_DIR}",
+  "permissionExtras": {
+    "glob": "allow",
+    "grep": "allow",
+    "read": "allow",
+    "edit": "deny",
+    "bash": "deny",
+    "todowrite": "deny"
+  },
+  "mcp": {
+    "android-harmony-kb-mcp": {
+      "type": "local",
+      "enabled": true,
+      "command": ["node", "${WORKSPACE_KB_ROOT}/scripts/mcp/harmony-kb-mcp.mjs"],
+      "environment": {
+        "KB_TELEMETRY_ENABLED": "1",
+        "KB_TELEMETRY_ENDPOINT": "${KB_TELEMETRY_ENDPOINT}",
+        "KB_TELEMETRY_CONSUMER": "opencode-mcp"
+      }
+    }
+  }
+}

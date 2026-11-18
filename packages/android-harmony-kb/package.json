@@ -1,0 +1,50 @@
+{
+  "name": "android-harmony-kb",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Workbench runtime for pluggable business knowledge, migration docs and CodeGraph",
+  "exports": {
+    "./knowledge-runtime": "./scripts/lib/knowledge-source-runtime.mjs"
+  },
+  "bin": {
+    "harmony-kb": "./scripts/cli/kb.mjs"
+  },
+  "scripts": {
+    "setup": "node scripts/cli/kb.mjs setup --yes",
+    "kb:codegraph-init": "node scripts/cli/kb.mjs codegraph-init",
+    "kb:codegraph-sync": "node scripts/cli/kb.mjs codegraph-sync",
+    "kb:init": "node scripts/cli/kb.mjs init",
+    "kb:install": "node scripts/cli/kb.mjs install --yes",
+    "kb:status": "node scripts/cli/kb.mjs status",
+    "kb:uninstall": "node scripts/cli/kb.mjs uninstall",
+    "validate": "node scripts/validate/validate-runtime.mjs",
+    "kb-sync:l2:check": "node scripts/kb-sync/run.mjs l2 --check-only",
+    "kb-sync:l2": "node scripts/kb-sync/run.mjs l2 --sync",
+    "test:v0.2": "node scripts/test/test-knowledge-sources.mjs && node scripts/test/test-migration-wiki.mjs",
+    "test:codegraph-config": "node scripts/test-codegraph-config.mjs",
+    "test:migration-wiki": "node scripts/test/test-migration-wiki.mjs",
+    "test:knowledge-sources": "node scripts/test/test-knowledge-sources.mjs",
+    "mcp:knowledge": "node scripts/mcp/harmony-kb-mcp.mjs",
+    "mcp:harmony-kb": "node scripts/mcp/harmony-kb-mcp.mjs",
+    "mcp:gateway": "node packages/kb-mcp-gateway/scripts/run-gateway.mjs",
+    "mcp:gateway:prod": "node packages/kb-mcp-gateway/scripts/run-gateway.mjs --production",
+    "mcp:gateway:deploy": "bash packages/kb-mcp-gateway/deploy.sh",
+    "mcp:gateway:test": "node packages/kb-mcp-gateway/scripts/smoke-test.mjs",
+    "mcp:gateway:test:scope": "node packages/kb-mcp-gateway/scripts/test-scope-path.mjs",
+    "mcp:codegraph": "node packages/kb-mcp-codegraph/scripts/run-codegraph.mjs",
+    "mcp:codegraph:prod": "node packages/kb-mcp-codegraph/scripts/run-codegraph.mjs --production",
+    "mcp:codegraph:deploy": "bash packages/kb-mcp-codegraph/deploy.sh",
+    "mcp:codegraph:test": "node packages/kb-mcp-codegraph/scripts/smoke-test.mjs",
+    "telemetry:bridge": "node packages/kb-telemetry/adapters/opencode-sse-bridge.mjs",
+    "telemetry:test": "node scripts/telemetry/test-telemetry.mjs",
+    "telemetry:benchmark": "node scripts/benchmark/kb-roi-harness.mjs",
+    "modules:list": "node scripts/ci/parse-app-modules.mjs --app demo-project --domain default --platform android",
+    "modules:list:harmony": "node scripts/ci/parse-app-modules.mjs --app demo-project --domain default --platform harmonyos"
+  },
+  "type": "module",
+  "dependencies": {
+    "@kugou/workspace-config": "1.0.0",
+    "@colbymchenry/codegraph": "^1.5.0",
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}

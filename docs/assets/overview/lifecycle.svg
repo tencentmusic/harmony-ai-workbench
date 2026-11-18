@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1250" viewBox="0 0 1600 1250" role="img" aria-labelledby="title desc">
+<title id="title">从需求到知识回流：产物与人工节点</title><desc id="desc">按阶段保存源码版本、材料与真实证据；人工决定绑定对应版本。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#547795"/></marker></defs>
+<style>text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}.title{font-size:38px;font-weight:700}.sub{font-size:22px;fill:#526b7b}.head{font-size:25px;font-weight:700;fill:#1265a1}.body{font-size:21px}.small{font-size:19px;fill:#526b7b}.human{font-size:21px;fill:#b33337;font-weight:600}.arrow{fill:none;stroke:#547795;stroke-width:2;marker-end:url(#arrow)}</style>
+<rect width="1600" height="1250" fill="#fff"/>
+<text x="48" y="65" class="title">从需求到知识回流：产物与人工节点</text><text x="48" y="110" class="sub">按阶段保存源码版本、材料与真实证据；人工决定绑定对应版本。</text>
+<path d="M48 140H1552" stroke="#cad6e0"/>
+<text x="68" y="185" class="head">阶段</text><text x="380" y="185" class="head">平台执行与交付物</text><text x="1050" y="185" class="head">人工协作 / 决定</text><rect x="48" y="210" width="1504" height="104" rx="8" fill="#f2f7fc" stroke="#cad6e0"/><text x="68" y="255" class="head">01  材料与查证</text><text x="380" y="250" class="body">需求文字 / 附件 / Android merged MR</text>
+<text x="380" y="281" class="body">固定源码，建立任务工作树与 Harness 档案</text><text x="1050" y="250" class="body">补充源码无法核实的业务事实</text>
+<text x="1050" y="281" class="body">产出：范围、调用链、验收项</text><path d="M210 314V332" class="arrow"/><rect x="48" y="336" width="1504" height="104" rx="8" fill="#f4faf7" stroke="#cad6e0"/><text x="68" y="381" class="head">02  Scope / UI</text><text x="380" y="376" class="body">整理范围审核包、UI 原型与状态对照</text>
+<text x="380" y="407" class="body">记录材料版本及审核结果</text><text x="1050" y="376" class="human">人工确认范围与 UI 基线</text>
+<text x="1050" y="407" class="human">无 UI 时明确不适用</text><path d="M210 440V458" class="arrow"/><rect x="48" y="462" width="1504" height="104" rx="8" fill="#f2f7fc" stroke="#cad6e0"/><text x="68" y="507" class="head">03  编码与审查</text><text x="380" y="502" class="body">在鸿蒙任务工作树实施；独立代码审查</text>
+<text x="380" y="533" class="body">修复后复审，保留问题与检查记录</text><text x="1050" y="502" class="body">按报告查看实现与未决问题</text>
+<text x="1050" y="533" class="body">产出：代码变更、审查报告</text><path d="M210 566V584" class="arrow"/><rect x="48" y="588" width="1504" height="104" rx="8" fill="#f4faf7" stroke="#cad6e0"/><text x="68" y="633" class="head">04  构建与设备</text><text x="380" y="628" class="body">构建当前源码，记录安装、操作与设备证据</text>
+<text x="380" y="659" class="body">截图 / 日志 / 连续画面；保留失败与缺项</text><text x="1050" y="628" class="body">逐状态处理视觉差异</text>
+<text x="1050" y="659" class="body">产出：构建、设备结论与缺项</text><path d="M210 692V710" class="arrow"/><rect x="48" y="714" width="1504" height="104" rx="8" fill="#f2f7fc" stroke="#cad6e0"/><text x="68" y="759" class="head">05  分支与提测</text><text x="380" y="754" class="body">整理代码、构建、审查和设备结论</text>
+<text x="380" y="785" class="body">发布特性分支，通知开发拉取复核</text><text x="1050" y="754" class="human">人工本地复核并确认提测</text>
+<text x="1050" y="785" class="human">确认后创建集成单</text><path d="M210 818V836" class="arrow"/><rect x="48" y="840" width="1504" height="104" rx="8" fill="#f4faf7" stroke="#cad6e0"/><text x="68" y="885" class="head">06  集成与合入</text><text x="380" y="880" class="body">集成台组织代码审查、测试与修复复审</text>
+<text x="380" y="911" class="body">核实代码实际合入目标分支</text><text x="1050" y="880" class="human">团队处理代码 MR 与测试</text>
+<text x="1050" y="911" class="human">人工合入；平台不代批</text><path d="M210 944V962" class="arrow"/><rect x="48" y="966" width="1504" height="104" rx="8" fill="#f2f7fc" stroke="#cad6e0"/><text x="68" y="1011" class="head">07  知识回流</text><text x="380" y="1006" class="body">代码合入核实后生成知识 MR</text>
+<text x="380" y="1037" class="body">核实知识合入，归档需求与交付材料</text><text x="1050" y="1006" class="human">人工审核知识变更</text>
+<text x="1050" y="1037" class="human">经验供后续分析和转译复用</text><text x="48" y="1139" class="small">设备结论可为未完成；失败和缺证据必须保留，不能标为通过。开发确认提测仍是独立人工节点。</text>
+<text x="48" y="1173" class="small">模拟器不支持 HDC 系统录屏；单张静态截图不能证明连续播放。知识库与 AI 员工可在任意阶段按需使用。</text></svg>

@@ -1,0 +1,15 @@
+.cursor/
+.cursor/mcp.json
+.claude/
+.codex/
+node_modules/
+prisma/*.db
+prisma/*.db-journal
+*.db
+*.db-journal
+.env
+.env.*
+!.env.example
+!.env.production.example
+.DS_Store
+registry/.migration-wiki-index.stamp.json

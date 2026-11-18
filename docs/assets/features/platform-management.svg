@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+  <title id="title">平台管理：权限、数据与自动更新</title>
+  <desc id="desc">管理员管理 Token 与 App 权限，结合运行配置管理模型。实际请求形成看板和审计记录。GitLab Webhook 按仓库与分支匹配触发配置的同步、索引或工作台部署动作。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#6c8798"/></marker></defs>
+  <style>
+    text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#243746;letter-spacing:0}
+    .title{font-size:38px;font-weight:700}.sub{font-size:23px;fill:#647785}
+    .heading{font-size:26px;font-weight:700}.body{font-size:22px;fill:#526a7a}
+    .label{font-size:21px;fill:#526a7a}.note{font-size:21px;fill:#647785}
+    .arrow{fill:none;stroke:#6c8798;stroke-width:2.5;marker-end:url(#arrow)}
+    .line{fill:none;stroke:#6c8798;stroke-width:2.5}
+  </style>
+  <rect width="1440" height="860" fill="#fff"/>
+  <text x="64" y="72" class="title">平台管理：权限、数据与自动更新</text>
+  <text x="64" y="118" class="sub">管理员集中查看使用情况，按记录定位问题和确认更新结果</text>
+  <g><rect x="64" y="180" width="384" height="142" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="256" y="223" text-anchor="middle" class="heading">访问与配置</text>
+    <text x="256" y="262" text-anchor="middle" class="body">Token、App / 模块权限</text>
+    <text x="256" y="295" text-anchor="middle" class="body">模型配置 + OpenCode 配置</text>
+  </g>
+  <g><rect x="528" y="180" width="384" height="142" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="720" y="223" text-anchor="middle" class="heading">数据看板</text>
+    <text x="720" y="262" text-anchor="middle" class="body">使用量、问答与知识命中</text>
+    <text x="720" y="295" text-anchor="middle" class="body">索引覆盖、迁移文档阅读</text>
+  </g>
+  <g><rect x="992" y="180" width="384" height="142" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+    <text x="1184" y="223" text-anchor="middle" class="heading">记录与排查</text>
+    <text x="1184" y="262" text-anchor="middle" class="body">问答 / MCP 调用 / 用户反馈</text>
+    <text x="1184" y="295" text-anchor="middle" class="body">输入、输出、失败与执行记录</text>
+  </g>
+  <text x="64" y="376" class="note">看板与审计来自真实请求；管理员入口 /admin/login，模型配置见运行配置文档。</text>
+  <rect y="424" width="1440" height="296" fill="#f6f8fa"/>
+  <text x="64" y="470" class="heading">自动同步与部署</text>
+  <g><rect x="64" y="502" width="384" height="142" rx="8" fill="#f8fafc" stroke="#d0dce5"/>
+    <text x="256" y="545" text-anchor="middle" class="heading">GitLab Webhook</text>
+    <text x="256" y="584" text-anchor="middle" class="body">Push / MR 合入事件</text>
+    <text x="256" y="617" text-anchor="middle" class="body">匹配仓库、分支与动作</text>
+  </g>
+  <g><rect x="528" y="502" width="384" height="142" rx="8" fill="#eef6ff" stroke="#c3d9ed"/>
+    <text x="720" y="545" text-anchor="middle" class="heading">受控更新</text>
+    <text x="720" y="584" text-anchor="middle" class="body">源码 / 知识内容同步</text>
+    <text x="720" y="617" text-anchor="middle" class="body">按配置重建索引或部署</text>
+  </g>
+  <g><rect x="992" y="502" width="384" height="142" rx="8" fill="#f0f9f5" stroke="#bfdfd0"/>
+    <text x="1184" y="545" text-anchor="middle" class="heading">自动更新记录</text>
+    <text x="1184" y="584" text-anchor="middle" class="body">命中规则、执行结果</text>
+    <text x="1184" y="617" text-anchor="middle" class="body">部署版本与失败原因</text>
+  </g>
+  <path d="M448 574H528" class="arrow"/>
+  <path d="M912 574H992" class="arrow"/>
+  <text x="64" y="775" class="note">工作台部署由对应配置触发；知识仓更新只执行其绑定动作。</text>
+  <text x="64" y="815" class="note">例如：查某次知识更新是否成功，先找对应 Webhook 记录，再核对同步 / 索引结果。</text>
+</svg>

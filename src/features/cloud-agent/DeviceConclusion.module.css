@@ -1,0 +1,32 @@
+.conclusion { min-width: 0; padding: 16px 0; color: #344054; font-size: 14px; line-height: 1.7; border-block: 1px solid #e5e7eb; }
+.header { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.header h3 { margin: 0; color: #1f2937; font-size: 14px; font-weight: 600; }
+.result { display: inline-flex; align-items: center; gap: 6px; color: #925d12; font-size: 13px; }
+.result[data-passed=true] { color: #18794e; }
+.states { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 14px 0; }
+.states > div { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.states dt { color: #667085; }
+.states dd { margin: 0; color: #667085; font-weight: 500; }
+.states dd[data-status=blocked] { color: #925d12; }
+.states dd[data-status=passed] { color: #18794e; }
+.conclusion h4 { margin: 12px 0 6px; font-size: 13px; font-weight: 600; }
+.records { margin: 0; padding-left: 24px; }
+.records li { padding: 6px 0 6px 4px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.records li + li { border-top: 1px solid #f0f2f5; }
+.records li::marker { color: #667085; font-variant-numeric: tabular-nums; }
+.records p { margin: 4px 0 0; }
+.details { margin-top: 12px; }
+.details summary { width: fit-content; max-width: 100%; cursor: pointer; font-size: 13px; color: #475467; overflow-wrap: anywhere; }
+.details summary:hover { color: #1677ff; }
+.details summary:focus-visible { outline: 2px solid #1677ff; outline-offset: 4px; }
+.metadata { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 8px 16px; margin: 14px 0; font-size: 12px; }
+.metadata dt { color: #667085; }
+.metadata dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.raw { margin: 6px 0 0; padding: 12px; background: #f7f8fa; font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 320px; overflow: auto; }
+.empty { margin: 0; color: #667085; }
+@media (max-width: 600px) {
+  .states { flex-direction: column; gap: 6px; }
+  .states > div { justify-content: space-between; }
+  .metadata { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .metadata dd { margin-bottom: 8px; }
+}

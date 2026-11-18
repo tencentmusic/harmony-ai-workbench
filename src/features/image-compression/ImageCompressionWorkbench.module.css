@@ -1,0 +1,32 @@
+.root { height: 100%; min-height: 0; overflow: auto; color: #1f2430; display: flex; flex-direction: column; gap: 12px; background: transparent; }
+.header { display: flex; align-items: center; gap: 8px; padding: 2px 2px 12px; color: #1f2430; background: transparent; border: 0; border-radius: 0; }
+.eyebrow { display: none; }
+.header h1 { font-size: 22px; font-weight: 600; line-height: 1.3; margin: 0; letter-spacing: 0; }
+.header p { margin: 2px 0 0; color: #8b93a7; font-size: 12px; }
+.badge { margin-left: 8px; color: #1f7a56; font-size: 12px; font-weight: 500; vertical-align: 1px; }
+.uploadSection { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; background: white; border: 1px solid #e6eaf2; border-radius: 12px; padding: 20px; }
+.step { color: #49877e; font: 12px ui-monospace, monospace; letter-spacing: 1px; }
+.root h2 { font-size: 20px; margin: 10px 0; }
+.uploadSection p { color: #6b7e79; line-height: 1.8; max-width: 600px; }
+.uploadSection button { margin-top: 10px; }
+.uploadSection :global(.ant-upload-wrapper) { min-width: 0; display: flex; flex-direction: column; }
+.uploadSection :global(.ant-upload-drag) { height: auto; min-height: 180px; flex: 1; }
+.progress, .duplicates, .details { background: white; border: 1px solid #e6eaf2; border-radius: 12px; padding: 20px; }
+.progress span { color: #6b7e79; }
+.resultHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.variants { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.variant { display: flex; flex-direction: column; gap: 10px; padding: 20px; background: #fff; border: 1px solid #e6eaf2; border-radius: 12px; }
+.variant h3 { margin: 0; font-size: 18px; }
+.variant p { color: #6b7e79; min-height: 42px; margin: 0; line-height: 1.6; }
+.size { font: 30px ui-monospace, monospace; font-weight: 600; margin-top: 10px; }
+.saving { color: #2c8067; font-weight: 600; }
+.variant small { color: #6b7e79; margin-bottom: 12px; }
+.variant button { align-self: flex-start; }
+.duplicates { overflow-wrap: anywhere; }
+.duplicates p { color: #6b7e79; }
+.details { min-width: 0; }
+.detailsTitle { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 16px; }
+.filename { overflow-wrap: anywhere; }
+.placeholder { padding: 28px; border: 1px dashed #d5ddec; border-radius: 12px; background: #fff; text-align: center; color: #8b93a7; }
+@media (max-width: 850px) { .uploadSection { grid-template-columns: 1fr; } .variants { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .uploadSection, .details { padding: 18px; } }
